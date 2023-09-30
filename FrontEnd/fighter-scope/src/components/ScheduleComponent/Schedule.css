@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+
+.schedule-wrapper {
+  display: inline-block;
+  padding: 0.5%;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.inner-schedule-wrapper {
+  display: block;
+  border-bottom: 1px solid black;
+  width: 160vh;
+  margin: 0.5rem 1rem;
+}
+
+/* .placeIcon {
+  background-image: url('../../public/placeIcon.png');
+  width: 0.4rem;
+  height: 0.4rem;
+} */

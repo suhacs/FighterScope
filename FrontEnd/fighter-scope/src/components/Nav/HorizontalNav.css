@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Staatliches:regular);
+
+.horizontal-nav {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(24, 34, 46);
+}
+
+.title {
+  color: white;
+  font-size: 1.8rem;
+  float: left;
+  margin: 0.7rem 3rem;
+  position: relative;
+  left: 6.4rem;
+}
+
+.horizontal-nav h3 {
+  color: rgb(205, 235, 128);
+  font-size: 1.5rem;
+  position: relative;
+  top: 20rem;
+  float: left;
+  margin: 4.5rem -13.7rem;
+
+  top: 2px;
+  left: 0;
+}
+
+.horizontal-nav ul {
+  list-style: none;
+}
+
+.horizontal-nav li {
+  font-size: 1.8rem;
+  float: right;
+  margin: 2.3rem 1.4rem;
+  color: rgb(255, 255, 255);
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: bold;
+}

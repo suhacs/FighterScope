@@ -1,0 +1,20 @@
+.appWrapper {
+  display: grid;
+  grid-template-columns: 11rem 8fr 2fr;
+  grid-template-rows: 10rem auto 3rem;
+  grid-template-areas:
+    'hor_nav hor_nav hor_nav'
+    'ver_nav contents news1'
+    'ver_nav contents news2';
+}
+.hor_nav {
+  grid-area: hor_nav;
+}
+
+.ver_nav {
+  grid-area: ver_nav;
+}
+
+.contents {
+  grid-area: contents;
+}

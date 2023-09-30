@@ -1,0 +1,23 @@
+.fighter-place-time-wrapper {
+  display: inline-block;
+}
+
+.fighters {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.place-time {
+  text-align: left;
+  margin-top: 0.1rem;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.icon {
+  margin: 0.5rem 0.2rem 0rem 0.7rem;
+}
