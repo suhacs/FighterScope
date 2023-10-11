@@ -1,13 +1,29 @@
+import React from 'react';
 import './DateBox.css';
 
 function DateBox(props) {
-  const month = props.date
-    .toLocaleString('kr', { month: 'long' })
-    .toUpperCase();
-  const date = props.date.toLocaleString('kr', { day: '2-digit' });
+  const monthsShort = [
+    'JAN',
+    'FEB',
+    'MAR',
+    'APR',
+    'MAY',
+    'JUN',
+    'JUL',
+    'AUG',
+    'SEP',
+    'OCT',
+    'NOV',
+    'DEC',
+  ];
+
+  const monthIndex = props.date.getMonth();
+  const monthShort = monthsShort[monthIndex];
+  const date = props.date.toLocaleString('en-US', { day: '2-digit' });
+
   return (
     <div className='date-box-wrapper'>
-      <p>{month}</p>
+      <p>{monthShort}</p>
       <p>{date}</p>
     </div>
   );

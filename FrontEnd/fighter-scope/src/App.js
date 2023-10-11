@@ -1,30 +1,19 @@
+import React, { useState, useEffect } from 'react';
 import Schedule from './components/ScheduleComponent/Schedule';
 import HorizontalNav from './components/Nav/HorizontalNav';
 import VerticalNav from './components/Nav/VerticalNav';
+import SearchBar from './components/SearchingAndNews/SearchBar.js';
+import retreiveSchedule from './services/ScheduleHttp';
 import './App.css';
 
-const boxingSchedule = [
-  {
-    date: new Date('2022-5-20'),
-    firstFighter: 'Korean Zombie',
-    secondFighter: 'Suha',
-    place: '77 Talbot road',
-  },
-  {
-    date: new Date('2023-5-20'),
-    firstFighter: 'Seoyong',
-    secondFighter: 'Gilgu',
-    place: '3220 East condos',
-  },
-  {
-    date: new Date('2022-6-20'),
-    firstFighter: 'Gil',
-    secondFighter: 'Gilgu',
-    place: 'Olympic Park Seoul Gangnam',
-  },
-];
-
 function App() {
+  const [boxingSchedules, setBoxingSchedules] = useState([]);
+
+  useEffect(() => {
+    retreiveSchedule().then((data) => setBoxingSchedules(data));
+  }, []);
+  console.log(boxingSchedules);
+
   return (
     <div className='appWrapper'>
       <div className='hor_nav'>
@@ -34,14 +23,9 @@ function App() {
         <VerticalNav />
       </div>
       <div className='contents'>
-        <Schedule schedule={boxingSchedule} />
+        <SearchBar />
+        {boxingSchedules.length > 0 && <Schedule schedule={boxingSchedules} />}
       </div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>7</div>
-      <div>8</div>
-      <div>9</div>
     </div>
   );
 }

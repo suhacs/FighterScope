@@ -1,0 +1,9 @@
+.count-down {
+  position: absolute;
+  display: inline-flex;
+  color: rgb(181, 65, 64);
+  font-size: 2rem;
+  font-weight: 900;
+  left: 75rem;
+  white-space: nowrap;
+}

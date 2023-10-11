@@ -8,7 +8,7 @@
 }
 
 .inner-schedule-wrapper {
-  display: block;
+  display: inline-block;
   border-bottom: 1px solid black;
   width: 160vh;
   margin: 0.5rem 1rem;

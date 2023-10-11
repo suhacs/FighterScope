@@ -1,7 +1,7 @@
 import './FighterPlaceTime.css';
 
 function FighterPlaceTime(props) {
-  const time = props.date.toLocaleString([], {
+  const time = props.date.toLocaleString(['en-US'], {
     hour: '2-digit',
     minute: '2-digit',
   });
@@ -26,7 +26,7 @@ function FighterPlaceTime(props) {
           width='13rem'
           height='13rem'
         ></img>
-        <b>KST </b>
+        <b>EST </b>
         {time}
       </p>
     </div>

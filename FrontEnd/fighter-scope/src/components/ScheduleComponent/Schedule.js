@@ -1,32 +1,38 @@
+import React, { useState } from 'react';
 import Card from './Card';
 import './Schedule.css';
 import DateBox from './DateBox';
-import FighterPlaceTIme from './FighterPlaceTime';
+import FighterPlaceTime from './FighterPlaceTime';
+import CountDown from './CountDown';
 
 function Schedule(props) {
+  const [schedulePaseed, setSchedulePassed] = useState(false);
+
+  const schedulePassHandler = () => {
+    setSchedulePassed(true);
+  };
+
+  const sortedSchedule = [...props.schedule].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+
+  const currentDate = new Date();
+
   return (
     <Card className='schedule-wrapper'>
-      <div className='inner-schedule-wrapper'>
-        <DateBox date={props.schedule[0].date} />
-        <FighterPlaceTIme
-          info={props.schedule[0]}
-          date={props.schedule[0].date}
-        />
-      </div>
-      <div className='inner-schedule-wrapper'>
-        <DateBox date={props.schedule[1].date} />
-        <FighterPlaceTIme
-          info={props.schedule[1]}
-          date={props.schedule[1].date}
-        />
-      </div>
-      <div className='inner-schedule-wrapper'>
-        <DateBox date={props.schedule[2].date} />
-        <FighterPlaceTIme
-          info={props.schedule[2]}
-          date={props.schedule[2].date}
-        />
-      </div>
+      {sortedSchedule.map(
+        (item) =>
+          currentDate < item.date && (
+            <div className='inner-schedule-wrapper' key={item.id}>
+              <DateBox date={item.date} />
+              <FighterPlaceTime info={item} date={item.date} />
+              <CountDown
+                date={item.date}
+                onSchedulePassed={schedulePassHandler}
+              />
+            </div>
+          )
+      )}
     </Card>
   );
 }
