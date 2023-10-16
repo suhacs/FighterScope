@@ -4,6 +4,7 @@ import HorizontalNav from './components/Nav/HorizontalNav';
 import VerticalNav from './components/Nav/VerticalNav';
 import SearchBar from './components/SearchingAndNews/SearchBar.js';
 import retreiveSchedule from './services/ScheduleHttp';
+import Container from '@mui/material/Conteainer';
 import './App.css';
 
 function App() {
