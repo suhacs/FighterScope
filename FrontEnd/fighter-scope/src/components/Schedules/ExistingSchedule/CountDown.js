@@ -5,7 +5,6 @@ const CountDown = (props) => {
   const [DDay, setDDay] = useState(0);
   const targetDate = new Date(props.date);
 
-  props.onSchedulePassed(false);
   useEffect(() => {
     const timer = setInterval(() => {
       const currentDate = new Date();
@@ -29,9 +28,7 @@ const CountDown = (props) => {
         .padStart(2, '0')}`;
       setDDay(countdownString);
 
-      if (timeDifference < 0) {
-        props.onSchedulePassed(true);
-      } else if (days < 1 && days > 0) {
+      if (days < 1 && days > 0) {
         setDDay('D-DAY');
       }
     }, 1000);

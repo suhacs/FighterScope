@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Schedule from './components/ScheduleComponent/Schedule';
+import Schedule from './components/Schedules/Schedule';
 import HorizontalNav from './components/Nav/HorizontalNav';
 import VerticalNav from './components/Nav/VerticalNav';
-import SearchBar from './components/SearchingAndNews/SearchBar.js';
 import retreiveSchedule from './services/ScheduleHttp';
-import Container from '@mui/material/Conteainer';
+
 import './App.css';
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
   useEffect(() => {
     retreiveSchedule().then((data) => setBoxingSchedules(data));
   }, []);
-  console.log(boxingSchedules);
 
   return (
     <div className='appWrapper'>
@@ -24,7 +22,6 @@ function App() {
         <VerticalNav />
       </div>
       <div className='contents'>
-        <SearchBar />
         {boxingSchedules.length > 0 && <Schedule schedule={boxingSchedules} />}
       </div>
     </div>
