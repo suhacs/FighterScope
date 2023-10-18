@@ -1,15 +1,16 @@
-const mapFightersToNames = (scheduleData, fighterData) => {
-  return scheduleData.map((item) => ({
-    date: new Date(item.date),
-    firstFighter: fighterData.find((fighter) => fighter.id === item.fighter_1)
-      .name,
-    secondFighter: fighterData.find((fighter) => fighter.id === item.fighter_2)
-      .name,
-    place: item.place,
-  }));
-};
-
 export const retrieveSchedule = async () => {
+  const mapFightersToNames = (scheduleData, fighterData) => {
+    return scheduleData.map((item) => ({
+      date: new Date(item.date),
+      firstFighter: fighterData.find((fighter) => fighter.id === item.fighter_1)
+        .name,
+      secondFighter: fighterData.find(
+        (fighter) => fighter.id === item.fighter_2
+      ).name,
+      place: item.place,
+    }));
+  };
+
   try {
     const scheduleResponse = await fetch('http://localhost:8080/schedule');
     const fighterResponse = await fetch('http://localhost:8080/fighter');
@@ -70,6 +71,9 @@ export const createSchedule = async (formData) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
+
+    const createdSchedule = await response.json();
+    return createdSchedule;
   } catch (error) {
     console.error('Error occurred during POST request:', error);
   }

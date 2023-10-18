@@ -1,7 +1,8 @@
 .newScheduleBox {
-  height: 32vh;
-  width: 145vh;
+  height: 28crem;
+  width: 68rem;
   margin: 1rem 2rem;
+  margin-left: 6rem;
   margin-bottom: 0rem;
   background-color: rgb(255, 255, 255);
   border: 2px solid;

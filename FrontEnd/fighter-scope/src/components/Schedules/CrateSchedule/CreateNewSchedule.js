@@ -1,12 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Container } from '@mui/material';
 import './CreateNewSchedule.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { createSchedule } from '../../../services/ScheduleHttp';
+import { retrieveFighter } from '../../../services/FighterHttp';
+import Autocomplete from '@mui/material/Autocomplete';
+import ShowAlert from './ShowAlert';
 
 const CrateNewSchedule = (props) => {
+  const [fighters, setFighters] = useState([]);
+  const [formSubmitted, setFormSubmitted] = useState('NoDisplay');
+
+  useEffect(() => {
+    const fetchFighters = async () => {
+      const fighterData = await retrieveFighter();
+      setFighters(fighterData);
+    };
+    fetchFighters();
+  }, []);
+
   const dateRef = useRef(null);
   const fighter1Ref = useRef(null);
   const fighter2Ref = useRef(null);
@@ -14,7 +28,6 @@ const CrateNewSchedule = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('working');
 
     const scheduleData = {
       date: dateRef.current.value,
@@ -24,11 +37,20 @@ const CrateNewSchedule = (props) => {
     };
 
     try {
-      const responseData = await createSchedule(scheduleData);
-      console.log('Response from server:', responseData);
+      const scheduleInfo = await createSchedule(scheduleData);
+      if (scheduleInfo) {
+        setFormSubmitted('Display');
+      } else {
+        setFormSubmitted('Error');
+      }
     } catch (error) {
       console.error('Error occurred during POST request:', error);
+      setFormSubmitted('Error');
     }
+
+    setTimeout(() => {
+      setFormSubmitted('NoDisplay');
+    }, 2000);
   };
 
   const resetHandler = () => {
@@ -42,26 +64,42 @@ const CrateNewSchedule = (props) => {
     <div className='newScheduleBox'>
       <Container>
         <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            id='filled-required'
-            label='Fighter1'
-            variant='standard'
-            inputRef={fighter1Ref}
-            InputLabelProps={{
-              shrink: true,
-            }}
+          <Autocomplete
+            id='size-small-standard'
+            size='small'
+            options={fighters}
+            getOptionLabel={(option) => option.name}
+            defaultValue={fighters[0]}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant='standard'
+                label='Fighter1'
+                inputRef={fighter1Ref}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )}
           />
           <br />
-          <TextField
-            fullWidth
-            id='filled-required'
-            label='Fighter2'
-            variant='standard'
-            inputRef={fighter2Ref}
-            InputLabelProps={{
-              shrink: true,
-            }}
+          <Autocomplete
+            id='size-small-standard'
+            size='small'
+            options={fighters}
+            getOptionLabel={(option) => option.name}
+            defaultValue={fighters[0]}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant='standard'
+                label='Fighter2'
+                inputRef={fighter2Ref}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            )}
           />
           <TextField
             fullWidth
@@ -72,32 +110,37 @@ const CrateNewSchedule = (props) => {
               shrink: true,
             }}
             inputRef={placeRef}
+            style={{ marginTop: '1rem' }}
           />
           <TextField
             fullWidth
             id='filled-required'
-            label='Date'
+            label='Date and Time'
             variant='standard'
-            type='date'
+            type='datetime-local'
             inputRef={dateRef}
             InputLabelProps={{
               shrink: true,
             }}
+            InputProps={{ inputProps: {} }}
             placeholder=''
+            style={{ marginTop: '1rem' }}
           />
+          <ShowAlert onSubmitted={formSubmitted} />
+
           <Box textAlign='center'>
             <Button
               variant='contained'
               type='submit'
               onClick={handleSubmit}
-              style={{ marginTop: '1.5rem' }}
+              style={{ margin: '2rem', marginTop: '3rem' }}
             >
               Send
             </Button>
             <Button
               variant='outlined'
               onClick={resetHandler}
-              style={{ marginTop: '1.5rem' }}
+              style={{ margin: '2rem', marginTop: '3rem' }}
             >
               Reset
             </Button>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import AddButton from '../../UI/AddButton';
 import CreateNewSchedule from './CreateNewSchedule';
 
+import './CreateNewSchedule.css';
+
 const AddNewSchedule = () => {
   const [scheduleUploader, setScheduleUploader] = useState(true);
 
