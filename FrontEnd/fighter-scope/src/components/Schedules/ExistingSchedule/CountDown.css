@@ -2,8 +2,9 @@
   position: absolute;
   display: inline-flex;
   color: rgb(181, 65, 64);
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 900;
-  left: 65rem;
+  /* left: 64rem; */
+  left: clamp(60rem, 20vw, 64rem);
   white-space: nowrap;
 }

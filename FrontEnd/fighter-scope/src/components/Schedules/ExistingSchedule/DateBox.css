@@ -1,10 +1,12 @@
 .date-box-wrapper {
-  font-size: 23px;
+  /* font-size: 23px; */
+  font-size: clamp(1.6rem, 1.7vw, 1.6rem);
   font-weight: bold;
   text-align: center;
   display: inline-block;
-  width: 5rem;
-  height: 4.5rem;
+  /* width: 5rem; */
+  width: clamp(5rem, 4.5vw, 5.5rem);
+  height: 4.8rem;
   border-radius: 30%;
   background-color: rgb(217, 217, 217);
 }
