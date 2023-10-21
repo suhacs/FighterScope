@@ -10,5 +10,7 @@ module.exports = (app) => {
 
   router.delete('/:id', schedule.deleteScheduleById);
 
+  router.put('/:id', schedule.updateScheduleById);
+
   app.use('/schedule', router);
 };

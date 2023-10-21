@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Schedule from './components/Schedules/Schedule';
 import HorizontalNav from './components/Nav/HorizontalNav';
 import VerticalNav from './components/Nav/VerticalNav';
-import retreiveSchedule from './services/ScheduleHttp';
+import { retrieveSchedule } from './services/ScheduleHttp';
 
 import './App.css';
 
@@ -10,7 +10,7 @@ function App() {
   const [boxingSchedules, setBoxingSchedules] = useState([]);
 
   useEffect(() => {
-    retreiveSchedule().then((data) => setBoxingSchedules(data));
+    retrieveSchedule().then((data) => setBoxingSchedules(data));
   }, []);
 
   return (

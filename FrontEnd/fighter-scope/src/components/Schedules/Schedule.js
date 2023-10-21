@@ -6,6 +6,7 @@ import FighterPlaceTime from './ExistingSchedule/FighterPlaceTime';
 import CountDown from './ExistingSchedule/CountDown';
 import SearchBar from './SearchBar/SearchBar';
 import NewSchedule from './CrateSchedule/NewSchedule';
+import EditSchedule from './ModifySchedule/EditSchedule';
 
 function Schedule(props) {
   const sortedSchedule = [...props.schedule].sort(
@@ -26,6 +27,7 @@ function Schedule(props) {
                 <DateBox date={item.date} />
                 <FighterPlaceTime info={item} date={item.date} />
                 <CountDown date={item.date} />
+                <EditSchedule scheduleInfo={item} />
               </div>
             )
         )}

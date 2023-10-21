@@ -5,6 +5,6 @@
   font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 900;
   /* left: 64rem; */
-  left: clamp(60rem, 20vw, 64rem);
+  left: clamp(60rem, 48vw, 100rem);
   white-space: nowrap;
 }

@@ -6,6 +6,7 @@ const AddButton = (props) => {
   return (
     <div className='button'>
       <Button
+        size='large'
         sx={{
           m: 1,
           color: 'black',
@@ -15,6 +16,7 @@ const AddButton = (props) => {
         component='label'
         variant='outlined'
         onClick={props.onClick}
+        style={{ fontSize: '1.5rem' }}
       >
         {props.children}
       </Button>

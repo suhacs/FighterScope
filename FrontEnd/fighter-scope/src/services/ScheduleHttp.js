@@ -8,6 +8,7 @@ export const retrieveSchedule = async () => {
         (fighter) => fighter.id === item.fighter_2
       ).name,
       place: item.place,
+      id: item.id,
     }));
   };
 
@@ -15,7 +16,6 @@ export const retrieveSchedule = async () => {
     const scheduleResponse = await fetch('http://localhost:8080/schedule');
     const fighterResponse = await fetch('http://localhost:8080/fighter');
 
-    console.log(scheduleResponse);
     if (!scheduleResponse.ok || !fighterResponse.ok) {
       throw new Error('Network response was not ok');
     }
@@ -78,4 +78,63 @@ export const createSchedule = async (formData) => {
     console.error('Error occurred during POST request:', error);
   }
 };
-export default retrieveSchedule;
+
+export const DeleteScheduleById = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:8080/schedule/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const deletedSchedule = await response.json();
+    console.log(deletedSchedule);
+    return deletedSchedule;
+  } catch (error) {
+    console.error('Error occurred during DELETE request:', error);
+  }
+};
+
+export const updateScheduleById = async (id, schedule) => {
+  try {
+    const fighter1Response = await fetch(
+      `http://localhost:8080/fighter/${schedule.fighter_1}`
+    );
+    const firstFigther = await fighter1Response.json();
+
+    const fighter2Response = await fetch(
+      `http://localhost:8080/fighter/${schedule.fighter_2}`
+    );
+    const secondFighter = await fighter2Response.json();
+
+    if (!fighter1Response.ok || !fighter2Response.ok) {
+      throw new Error('One or both fighters do not exist in the database');
+    }
+
+    const updatedFormData = {
+      date: schedule.date,
+      place: schedule.place,
+      fighter_1: firstFigther[0].id,
+      fighter_2: secondFighter[0].id,
+    };
+
+    console.log(updatedFormData);
+    const response = await fetch(`http://localhost:8080/schedule/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedFormData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const updatedSchedule = await response.json();
+    return updatedSchedule;
+  } catch (error) {
+    console.error('Error occurred during PUT request:', error);
+  }
+};

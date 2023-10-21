@@ -36,9 +36,11 @@ const CrateNewSchedule = (props) => {
       place: placeRef.current.value,
     };
 
+    console.log(scheduleData);
+
     try {
-      const scheduleInfo = await createSchedule(scheduleData);
-      if (scheduleInfo) {
+      const schedulePost = await createSchedule(scheduleData);
+      if (schedulePost) {
         setFormSubmitted('Display');
       } else {
         setFormSubmitted('Error');
@@ -50,7 +52,7 @@ const CrateNewSchedule = (props) => {
 
     setTimeout(() => {
       setFormSubmitted('NoDisplay');
-    }, 2000);
+    }, 3000);
   };
 
   const resetHandler = () => {
@@ -130,6 +132,7 @@ const CrateNewSchedule = (props) => {
 
           <Box textAlign='center'>
             <Button
+              size='large'
               variant='contained'
               type='submit'
               onClick={handleSubmit}
@@ -138,6 +141,7 @@ const CrateNewSchedule = (props) => {
               Send
             </Button>
             <Button
+              size='large'
               variant='outlined'
               onClick={resetHandler}
               style={{ margin: '2rem', marginTop: '3rem' }}

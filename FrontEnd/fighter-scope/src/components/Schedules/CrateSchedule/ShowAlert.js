@@ -9,19 +9,19 @@ const ShowAlert = (props) => {
         <Alert
           variant='filled'
           severity='success'
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '1rem', fontSize: '1rem' }}
         >
-          This is a success alert — check it out!
+          The schedule was successfully registered.
         </Alert>
       )}
       {props.onSubmitted === 'Error' && (
         <Alert
           variant='filled'
           severity='error'
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '1rem', fontSize: '1rem' }}
           className='invalid-error'
         >
-          This is an error alert — check it out!
+          Failed to register the schedule. Please try again.
         </Alert>
       )}
     </React.Fragment>
