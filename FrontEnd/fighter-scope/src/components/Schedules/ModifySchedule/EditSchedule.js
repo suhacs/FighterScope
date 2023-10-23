@@ -74,8 +74,6 @@ const EditSchedule = (props) => {
     return '';
   };
 
-  console.log(props.scheduleInfo.id);
-
   return (
     <div className='edit-button-wrapper'>
       <SmallBtn handleClickOpen={handleEditOpen} buttonType='edit'>
@@ -92,12 +90,16 @@ const EditSchedule = (props) => {
         openHandler={handleEditOpen}
         closeHandler={handleEditClose}
         scheduleInfo={props.scheduleInfo}
+        scheduleHandler={props.scheduleHandler}
+        scheduleData={props.scheduleData}
       />
       <DeleteDialog
         open={deleteDialog}
         scheduleInfo={props.scheduleInfo}
         openHandler={handleDeleteOpen}
         closeHandler={handleDeleteClose}
+        scheduleHandler={props.scheduleHandler}
+        scheduleData={props.scheduleData}
       />
     </div>
   );

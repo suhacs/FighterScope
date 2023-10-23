@@ -27,7 +27,11 @@ function Schedule(props) {
                 <DateBox date={item.date} />
                 <FighterPlaceTime info={item} date={item.date} />
                 <CountDown date={item.date} />
-                <EditSchedule scheduleInfo={item} />
+                <EditSchedule
+                  scheduleData={props.schedule}
+                  scheduleHandler={props.scheduleHandler}
+                  scheduleInfo={item}
+                />
               </div>
             )
         )}

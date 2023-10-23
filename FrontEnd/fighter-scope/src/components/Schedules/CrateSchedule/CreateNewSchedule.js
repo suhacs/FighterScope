@@ -40,6 +40,7 @@ const CrateNewSchedule = (props) => {
 
     try {
       const schedulePost = await createSchedule(scheduleData);
+      console.log(schedulePost);
       if (schedulePost) {
         setFormSubmitted('Display');
       } else {

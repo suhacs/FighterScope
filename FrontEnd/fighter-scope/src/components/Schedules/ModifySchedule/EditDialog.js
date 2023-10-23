@@ -23,8 +23,23 @@ const EditDialog = (props) => {
         place: placeRef.current.value,
         date: dateRef.current.value,
       };
-      console.log(props.scheduleInfo.id);
-      await updateScheduleById(props.scheduleInfo.id, scheduleBeUpdated);
+
+      const updatedSchedule = await updateScheduleById(
+        props.scheduleInfo.id,
+        scheduleBeUpdated
+      );
+
+      const originalData = props.scheduleData.find(
+        (element) => element.id === props.scheduleInfo.id
+      );
+      const index = props.scheduleData.indexOf(originalData);
+      props.scheduleData[index] = await updatedSchedule.data;
+      await props.scheduleHandler(props.scheduleData);
+      await console.log(props.scheduleData);
+
+      await setTimeout(() => {
+        props.closeHandler();
+      });
     } catch (error) {
       console.error(`Error occured during updating the schedule!:${error}`);
     }

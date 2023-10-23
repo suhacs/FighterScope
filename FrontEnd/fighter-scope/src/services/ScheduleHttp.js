@@ -42,11 +42,13 @@ export const createSchedule = async (formData) => {
     const fighter1Response = await fetch(
       `http://localhost:8080/fighter/${formData.fighter_1}`
     );
+
     const firstFigtherId = await fighter1Response.json();
 
     const fighter2Response = await fetch(
       `http://localhost:8080/fighter/${formData.fighter_2}`
     );
+
     const secondFighterId = await fighter2Response.json();
 
     if (!fighter1Response.ok || !fighter2Response.ok) {
@@ -109,6 +111,9 @@ export const updateScheduleById = async (id, schedule) => {
     );
     const secondFighter = await fighter2Response.json();
 
+    console.log(firstFigther[0].id);
+    console.log(secondFighter[0].id);
+
     if (!fighter1Response.ok || !fighter2Response.ok) {
       throw new Error('One or both fighters do not exist in the database');
     }
@@ -121,6 +126,7 @@ export const updateScheduleById = async (id, schedule) => {
     };
 
     console.log(updatedFormData);
+
     const response = await fetch(`http://localhost:8080/schedule/${id}`, {
       method: 'PUT',
       headers: {

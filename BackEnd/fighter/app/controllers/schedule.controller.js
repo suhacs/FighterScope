@@ -1,57 +1,59 @@
 const Schedule = require('../models/schedule.model');
 const mongoose = require('mongoose');
 
-const createSchedule = (req, res) => {
+const createSchedule = async (req, res) => {
   const isNotFilled =
     !req.body.date ||
     !req.body.fighter_1 ||
     !req.body.fighter_2 ||
     !req.body.place;
 
-  const isDuplicated =
-    Schedule.find(req.body.date) &&
-    Schedule.find(req.body.fighter_1) &&
-    Schedule.find(req.body.fighter_2) &&
-    Schedule.find(req.body.place);
-
-  // Validate request
-  if (isNotFilled) {
-    return res.status(400).send({
-      message: 'Date, fighter_1, fighter_2, and place are required fields!',
+  try {
+    const isDuplicated = await Schedule.findOne({
+      date: req.body.date,
+      $or: [
+        { fighter_1: req.body.fighter_1, fighter_2: req.body.fighter_2 },
+        { fighter_1: req.body.fighter_2, fighter_2: req.body.fighter_1 },
+      ],
+      place: req.body.place,
     });
-  } else if (isDuplicated) {
-    return res.status(400).send({
-      message: 'The schedule already exist in the database!',
+
+    console.log(isDuplicated);
+
+    if (isNotFilled) {
+      return res.status(400).send({
+        message: 'Please fill up all the input fields',
+      });
+    } else if (isDuplicated) {
+      return res.status(400).send({
+        message: 'The schedule already exists in the database.',
+      });
+    }
+
+    const dateValue = new Date(req.body.date);
+
+    // Adjust date to Toronto time
+    const localDateTime = dateValue.toLocaleString('en-US', {
+      timeZone: 'America/New_York',
+    });
+
+    // Create a Schedule
+    const schedule = new Schedule({
+      date: localDateTime,
+      fighter_1: new mongoose.Types.ObjectId(req.body.fighter_1),
+      fighter_2: new mongoose.Types.ObjectId(req.body.fighter_2),
+      place: req.body.place,
+    });
+
+    // Save Schedule in the database
+    const data = await schedule.save();
+    res.send(data);
+  } catch (error) {
+    res.status(500).send({
+      message:
+        error.message || 'Some error occurred while creating the schedule.',
     });
   }
-
-  const dateValue = new Date(req.body.date);
-
-  // Adjust date to Toronto time
-  const localDateTime = dateValue.toLocaleString('en-US', {
-    timeZone: 'America/New_York',
-  });
-
-  // Create a Schedule
-  const schedule = new Schedule({
-    date: localDateTime,
-    fighter_1: new mongoose.Types.ObjectId(req.body.fighter_1), // Convert to ObjectId
-    fighter_2: new mongoose.Types.ObjectId(req.body.fighter_2), // Convert to ObjectId
-    place: req.body.place,
-  });
-
-  // Save Schedule in the database
-  schedule
-    .save()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || 'Some error occurred while creating the schedule.',
-      });
-    });
 };
 
 const retreiveAllSchedule = (req, res) => {
@@ -101,16 +103,20 @@ const findSchedulesByFighterId = async (req, res) => {
 const updateScheduleById = (req, res) => {
   const id = req.params.id;
 
+  console.log(req.body.date);
+  console.log(req.body.fighter_1);
+  console.log(req.body.fighter_2);
+  console.log(req.body.place);
+
   const isNotFilled =
     !req.body.date ||
     !req.body.fighter_1 ||
     !req.body.fighter_2 ||
     !req.body.place;
 
-  // Validate request
   if (isNotFilled) {
     return res.status(400).send({
-      message: 'Date, fighter_1, fighter_2, and place are required fields!',
+      message: 'Please fill up all the input fields',
     });
   }
 
@@ -126,8 +132,6 @@ const updateScheduleById = (req, res) => {
     fighter_2: new mongoose.Types.ObjectId(req.body.fighter_2),
     place: req.body.place,
   };
-
-  console.log(updatedSchedule);
 
   Schedule.findByIdAndUpdate(id, { $set: updatedSchedule }, { new: true })
     .then((data) => {

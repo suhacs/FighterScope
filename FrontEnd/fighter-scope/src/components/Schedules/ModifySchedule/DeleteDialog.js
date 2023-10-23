@@ -10,6 +10,7 @@ import { DeleteScheduleById } from '../../../services/ScheduleHttp';
 const DeleteDialog = (props) => {
   const deleteSchedule = async (id) => {
     await DeleteScheduleById(id);
+    await props.scheduleHandler(props.scheduleData);
   };
   return (
     <div>

@@ -9,6 +9,10 @@ import './App.css';
 function App() {
   const [boxingSchedules, setBoxingSchedules] = useState([]);
 
+  const scheduleHandler = async (updatedSchedule) => {
+    await setBoxingSchedules([...updatedSchedule]);
+  };
+
   useEffect(() => {
     retrieveSchedule().then((data) => setBoxingSchedules(data));
   }, []);
@@ -22,7 +26,12 @@ function App() {
         <VerticalNav />
       </div>
       <div className='contents'>
-        {boxingSchedules.length > 0 && <Schedule schedule={boxingSchedules} />}
+        {boxingSchedules.length > 0 && (
+          <Schedule
+            schedule={boxingSchedules}
+            scheduleHandler={scheduleHandler}
+          />
+        )}
       </div>
     </div>
   );
