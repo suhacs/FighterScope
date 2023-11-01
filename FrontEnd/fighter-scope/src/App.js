@@ -9,13 +9,13 @@ import './App.css';
 function App() {
   const [boxingSchedules, setBoxingSchedules] = useState([]);
 
+  useEffect(() => {
+    retrieveSchedule().then((data) => setBoxingSchedules(data));
+  }, [boxingSchedules]);
+
   const scheduleHandler = async (updatedSchedule) => {
     await setBoxingSchedules([...updatedSchedule]);
   };
-
-  useEffect(() => {
-    retrieveSchedule().then((data) => setBoxingSchedules(data));
-  }, []);
 
   return (
     <div className='appWrapper'>

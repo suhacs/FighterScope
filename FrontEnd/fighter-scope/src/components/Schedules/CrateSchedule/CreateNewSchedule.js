@@ -8,6 +8,7 @@ import { createSchedule } from '../../../services/ScheduleHttp';
 import { retrieveFighter } from '../../../services/FighterHttp';
 import Autocomplete from '@mui/material/Autocomplete';
 import ShowAlert from './ShowAlert';
+import SendIcon from '@mui/icons-material/Send';
 
 const CrateNewSchedule = (props) => {
   const [fighters, setFighters] = useState([]);
@@ -137,6 +138,7 @@ const CrateNewSchedule = (props) => {
               variant='contained'
               type='submit'
               onClick={handleSubmit}
+              startIcon={<SendIcon />}
               style={{ margin: '2rem', marginTop: '3rem' }}
             >
               Send

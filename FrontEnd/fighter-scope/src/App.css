@@ -1,5 +1,6 @@
 .appWrapper {
   display: grid;
+  height: 100vh;
   background-color: rgb(241, 241, 241);
   grid-template-columns: 11rem 8fr 2fr;
   grid-template-rows: 10rem auto 3rem;

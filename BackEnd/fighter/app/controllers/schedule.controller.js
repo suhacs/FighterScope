@@ -150,10 +150,24 @@ const updateScheduleById = (req, res) => {
     });
 };
 
+const findSchedulesByFightersNameOrPlace = async (req, res) => {
+  const { param } = req.params;
+
+  try {
+    const schedules = await Schedule.find({
+      $or: [{ fighter_1: param }, { fighter_2: param }, { place: param }],
+    });
+    return schedules;
+  } catch (err) {
+    return res.status(404).send({ message: 'Fighter or place not found' });
+  }
+};
+
 module.exports = {
   createSchedule,
   retreiveAllSchedule,
   deleteScheduleById,
   findSchedulesByFighterId,
   updateScheduleById,
+  findSchedulesByFightersNameOrPlace,
 };

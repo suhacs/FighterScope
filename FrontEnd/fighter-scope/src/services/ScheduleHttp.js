@@ -1,7 +1,9 @@
 export const retrieveSchedule = async () => {
   const mapFightersToNames = (scheduleData, fighterData) => {
     return scheduleData.map((item) => ({
-      date: new Date(item.date),
+      date: new Date(
+        item.date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+      ),
       firstFighter: fighterData.find((fighter) => fighter.id === item.fighter_1)
         .name,
       secondFighter: fighterData.find(
@@ -23,14 +25,7 @@ export const retrieveSchedule = async () => {
     const scheduleData = await scheduleResponse.json();
     const fighterData = await fighterResponse.json();
 
-    const scheduleArray = mapFightersToNames(scheduleData, fighterData);
-
-    scheduleArray.forEach((item) => {
-      item.date = new Date(
-        item.date.toLocaleString('en-US', { timeZone: 'America/New_York' })
-      );
-    });
-
+    const scheduleArray = await mapFightersToNames(scheduleData, fighterData);
     return scheduleArray;
   } catch (err) {
     console.error('Error occurred during fetching data:', err);

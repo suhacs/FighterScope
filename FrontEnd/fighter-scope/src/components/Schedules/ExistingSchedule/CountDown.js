@@ -8,8 +8,6 @@ const CountDown = (props) => {
   useEffect(() => {
     const timer = setInterval(() => {
       const currentDate = new Date();
-      //   console.log(currentDate);
-      //   console.log(props.date);
       const timeDifference = targetDate - currentDate;
 
       const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -31,10 +29,10 @@ const CountDown = (props) => {
       if (days < 1 && days > 0) {
         setDDay('D-DAY');
       }
-    }, 1000);
+    }, 50);
 
-    return () => clearInterval(timer); // Cleanup the interval on component unmount
-  });
+    return () => clearInterval(timer);
+  }, []);
 
   return <p className='count-down'>{DDay}</p>;
 };

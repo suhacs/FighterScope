@@ -32,11 +32,11 @@ const EditDialog = (props) => {
       const originalData = props.scheduleData.find(
         (element) => element.id === props.scheduleInfo.id
       );
+      const scheduleCopy = [...props.scheduleData];
       const index = props.scheduleData.indexOf(originalData);
-      props.scheduleData[index] = await updatedSchedule.data;
-      await props.scheduleHandler(props.scheduleData);
-      await console.log(props.scheduleData);
-
+      scheduleCopy[index] = await updatedSchedule.data;
+      console.log(updatedSchedule.data);
+      await props.scheduleHandler(...[scheduleCopy]);
       await setTimeout(() => {
         props.closeHandler();
       });

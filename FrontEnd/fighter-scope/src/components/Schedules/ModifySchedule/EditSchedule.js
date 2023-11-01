@@ -92,6 +92,7 @@ const EditSchedule = (props) => {
         scheduleInfo={props.scheduleInfo}
         scheduleHandler={props.scheduleHandler}
         scheduleData={props.scheduleData}
+        countDown={props.countDownHandler}
       />
       <DeleteDialog
         open={deleteDialog}
