@@ -29,7 +29,7 @@ const CountDown = (props) => {
       if (days < 1 && days > 0) {
         setDDay('D-DAY');
       }
-    }, 50);
+    }, 80);
 
     return () => clearInterval(timer);
   }, []);

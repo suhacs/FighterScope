@@ -34,14 +34,15 @@ const EditDialog = (props) => {
       );
       const scheduleCopy = [...props.scheduleData];
       const index = props.scheduleData.indexOf(originalData);
-      scheduleCopy[index] = await updatedSchedule.data;
-      console.log(updatedSchedule.data);
-      await props.scheduleHandler(...[scheduleCopy]);
-      await setTimeout(() => {
+      scheduleCopy[index] = updatedSchedule.data;
+
+      props.scheduleHandler(scheduleCopy);
+
+      setTimeout(() => {
         props.closeHandler();
       });
     } catch (error) {
-      console.error(`Error occured during updating the schedule!:${error}`);
+      console.error(`Error occurred during updating the schedule!: ${error}`);
     }
   };
 

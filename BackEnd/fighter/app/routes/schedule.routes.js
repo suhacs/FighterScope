@@ -8,6 +8,8 @@ module.exports = (app) => {
 
   router.get('/fighter/:fighterId', schedule.findSchedulesByFighterId);
 
+  router.get('/:param', schedule.findSchedulesByFightersNameOrPlace);
+
   router.delete('/:id', schedule.deleteScheduleById);
 
   router.put('/:id', schedule.updateScheduleById);

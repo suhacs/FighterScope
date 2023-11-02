@@ -41,12 +41,14 @@ const retrieveAllFighter = async (req, res) => {
 // Find Fighters by Name
 const findByFighterName = async (req, res) => {
   try {
-    const name = req.params.fighterName; // Correct the parameter name here
-    const data = await Fighter.find({ name });
+    const fighterName = req.params.fighterName;
+    const regexName = new RegExp(fighterName, 'i');
+    const data = await Fighter.find({ name: { $regex: regexName } });
+
     res.send(data);
   } catch (err) {
     res.status(500).send({
-      message: 'Error occurred finding fighter named ' + name,
+      message: 'Error occurred finding fighter named ' + req.params.fighterName,
     });
   }
 };

@@ -76,7 +76,7 @@ export const createSchedule = async (formData) => {
   }
 };
 
-export const DeleteScheduleById = async (id) => {
+export const deleteScheduleById = async (id) => {
   try {
     const response = await fetch(`http://localhost:8080/schedule/${id}`, {
       method: 'DELETE',

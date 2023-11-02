@@ -1,5 +1,6 @@
 const Schedule = require('../models/schedule.model');
 const mongoose = require('mongoose');
+const findFighterIDByName = require('../utils/fighterUtils');
 
 const createSchedule = async (req, res) => {
   const isNotFilled =
@@ -150,16 +151,44 @@ const updateScheduleById = (req, res) => {
     });
 };
 
+const findByFighterName = async (fighterName) => {
+  try {
+    const regexName = new RegExp(fighterName, 'i');
+    const data = await Fighter.find({ name: { $regex: regexName } });
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 const findSchedulesByFightersNameOrPlace = async (req, res) => {
   const { param } = req.params;
 
   try {
+    const regexParam = new RegExp(param, 'i');
+
+    console.log('regexParam:', regexParam);
+
+    const fighterIds = await findFighterIDByName(param); // Search for fighter IDs
+
     const schedules = await Schedule.find({
-      $or: [{ fighter_1: param }, { fighter_2: param }, { place: param }],
-    });
-    return schedules;
+      $or: [
+        { fighter_1: { $in: fighterIds } },
+        { fighter_2: { $in: fighterIds } },
+        { place: { $regex: regexParam } },
+      ],
+    }).populate('fighter_1 fighter_2'); // Populate fighter data
+
+    console.log(schedules);
+
+    if (schedules.length > 0) {
+      res.send(schedules);
+    } else {
+      return res.status(404).send({ message: 'Fighter or place not found' });
+    }
   } catch (err) {
-    return res.status(404).send({ message: 'Fighter or place not found' });
+    console.error(err);
+    return res.status(500).send({ message: 'Internal Server Error' });
   }
 };
 

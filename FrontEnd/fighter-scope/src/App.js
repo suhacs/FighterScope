@@ -3,11 +3,11 @@ import Schedule from './components/Schedules/Schedule';
 import HorizontalNav from './components/Nav/HorizontalNav';
 import VerticalNav from './components/Nav/VerticalNav';
 import { retrieveSchedule } from './services/ScheduleHttp';
-
 import './App.css';
 
 function App() {
   const [boxingSchedules, setBoxingSchedules] = useState([]);
+  const [filteredSchedule, setFilteredSchedule] = useState();
 
   useEffect(() => {
     retrieveSchedule().then((data) => setBoxingSchedules(data));
@@ -15,6 +15,11 @@ function App() {
 
   const scheduleHandler = async (updatedSchedule) => {
     await setBoxingSchedules([...updatedSchedule]);
+    console.log(updatedSchedule);
+  };
+
+  const filterHandler = (filteredItems) => {
+    setFilteredSchedule(filteredItems);
   };
 
   return (
@@ -28,8 +33,9 @@ function App() {
       <div className='contents'>
         {boxingSchedules.length > 0 && (
           <Schedule
-            schedule={boxingSchedules}
+            schedule={filteredSchedule ? filteredSchedule : boxingSchedules}
             scheduleHandler={scheduleHandler}
+            filterHandler={filterHandler}
           />
         )}
       </div>

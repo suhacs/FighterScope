@@ -17,24 +17,28 @@ function Schedule(props) {
 
   return (
     <React.Fragment>
-      <SearchBar />
+      <SearchBar
+        schedule={props.schedule}
+        filterHandler={props.filterHandler}
+      />
       <NewSchedule />
       <Card className='schedule-wrapper'>
-        {sortedSchedule.map(
-          (item) =>
-            currentDate < item.date && (
-              <div className='inner-schedule-wrapper' key={item.id}>
-                <DateBox date={item.date} />
-                <FighterPlaceTime info={item} date={item.date} />
-                <CountDown date={item.date} />
-                <EditSchedule
-                  scheduleData={props.schedule}
-                  scheduleHandler={props.scheduleHandler}
-                  scheduleInfo={item}
-                />
-              </div>
-            )
-        )}
+        {sortedSchedule &&
+          sortedSchedule.map(
+            (item) =>
+              currentDate < item.date && (
+                <div className='inner-schedule-wrapper' key={item.id}>
+                  <DateBox date={item.date} />
+                  <FighterPlaceTime info={item} date={item.date} />
+                  <CountDown date={item.date} />
+                  <EditSchedule
+                    scheduleData={props.schedule}
+                    scheduleHandler={props.scheduleHandler}
+                    scheduleInfo={item}
+                  />
+                </div>
+              )
+          )}
       </Card>
     </React.Fragment>
   );

@@ -5,12 +5,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { DeleteScheduleById } from '../../../services/ScheduleHttp';
+import { deleteScheduleById } from '../../../services/ScheduleHttp';
 
 const DeleteDialog = (props) => {
   const deleteSchedule = async (id) => {
-    await DeleteScheduleById(id);
-    await props.scheduleHandler(props.scheduleData);
+    await deleteScheduleById(id);
+    props.scheduleHandler(props.scheduleData);
   };
   return (
     <div>
