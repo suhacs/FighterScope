@@ -13,8 +13,8 @@ function App() {
     retrieveSchedule().then((data) => setBoxingSchedules(data));
   }, [boxingSchedules]);
 
-  const scheduleHandler = async (updatedSchedule) => {
-    await setBoxingSchedules([...updatedSchedule]);
+  const scheduleHandler = (updatedSchedule) => {
+    setBoxingSchedules([...updatedSchedule]);
     console.log(updatedSchedule);
   };
 
