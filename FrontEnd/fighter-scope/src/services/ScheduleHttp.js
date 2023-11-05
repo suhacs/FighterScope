@@ -1,17 +1,23 @@
 export const retrieveSchedule = async () => {
   const mapFightersToNames = (scheduleData, fighterData) => {
-    return scheduleData.map((item) => ({
-      date: new Date(
-        item.date.toLocaleString('en-US', { timeZone: 'America/New_York' })
-      ),
-      firstFighter: fighterData.find((fighter) => fighter.id === item.fighter_1)
-        .name,
-      secondFighter: fighterData.find(
+    return scheduleData.map((item) => {
+      const firstFighter = fighterData.find(
+        (fighter) => fighter.id === item.fighter_1
+      );
+      const secondFighter = fighterData.find(
         (fighter) => fighter.id === item.fighter_2
-      ).name,
-      place: item.place,
-      id: item.id,
-    }));
+      );
+
+      return {
+        date: new Date(
+          item.date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+        ),
+        firstFighter: firstFighter ? firstFighter.name : '',
+        secondFighter: secondFighter ? secondFighter.name : '',
+        place: item.place,
+        id: item.id,
+      };
+    });
   };
 
   try {
@@ -22,11 +28,11 @@ export const retrieveSchedule = async () => {
       throw new Error('Network response was not ok');
     }
 
-    const scheduleData = await scheduleResponse.json();
-    const fighterData = await fighterResponse.json();
+    const scheduleArr = await scheduleResponse.json();
+    const fighterArr = await fighterResponse.json();
+    const scheduleData = await mapFightersToNames(scheduleArr, fighterArr);
 
-    const scheduleArray = await mapFightersToNames(scheduleData, fighterData);
-    return scheduleArray;
+    return scheduleData;
   } catch (err) {
     console.error('Error occurred during fetching data:', err);
   }

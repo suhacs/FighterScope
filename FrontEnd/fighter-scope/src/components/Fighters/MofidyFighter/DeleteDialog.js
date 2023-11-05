@@ -5,13 +5,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { deleteScheduleById } from '../../../services/ScheduleHttp';
+import { deleteFighterById } from '../../../services/FighterHttp';
 
 const DeleteDialog = (props) => {
-  const deleteSchedule = async (id) => {
-    await deleteScheduleById(id);
-    // props.scheduleHandler(props.scheduleData);
+  const deleteFighter = async (id) => {
+    const deletedFighter = await deleteFighterById(id);
+    console.log(deletedFighter);
   };
+
   return (
     <div>
       <Dialog
@@ -23,13 +24,14 @@ const DeleteDialog = (props) => {
         <DialogTitle id='alert-dialog-title'>{'Delete Schedule'}</DialogTitle>
         <DialogContent>
           <DialogContentText id='alert-dialog-description'>
-            Are you sure you want to delete the shedule?
+            Are you sure you want to delete the fighter?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button
             onClick={() => {
-              deleteSchedule(props.scheduleInfo.id);
+              //   console.log(props.fighterInfo);
+              deleteFighter(props.fighterInfo.id);
               props.closeHandler();
             }}
           >

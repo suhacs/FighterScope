@@ -1,12 +1,24 @@
 import './VerticalNav.css';
+import { Link } from 'react-router-dom';
 
 function VerticalNav() {
   return (
     <div className='vertical-nav'>
       <nav>
         <ul>
-          <li>MANAGE FIGHTERS</li>
-          <li>MANAGE SCHEDULE</li>
+          <li>
+            <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+              MANAGE SCHEDULE
+            </Link>
+          </li>
+          <li>
+            <Link
+              to='/fighter'
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              MANAGE FIGHTER
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

@@ -11,7 +11,9 @@ module.exports = (app) => {
   router.get('/:fighterName', fighter.findByFighterName);
 
   // Delete a fighter by name
-  router.delete('/:fighterName', fighter.deleteByFighterName);
+  //   router.delete('/:fighterName', fighter.deleteByFighterName);
+  //
+  router.delete('/:id', fighter.deleteFighterById);
 
   // Update a fighter by ID
   router.put('/:id', fighter.updateById);

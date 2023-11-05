@@ -53,10 +53,9 @@ const findByFighterName = async (req, res) => {
   }
 };
 
-// Delete Fighter by Name
 const deleteByFighterName = async (req, res) => {
   try {
-    const name = req.params.fighterName; // Correct the parameter name here
+    const name = req.params.fighterName;
     const data = await Fighter.deleteOne({ name });
 
     if (data.deletedCount === 0) {
@@ -70,7 +69,30 @@ const deleteByFighterName = async (req, res) => {
     });
   } catch (err) {
     res.status(500).send({
-      message: 'Could not delete Fighter with name ' + name,
+      message: `Could not delete Fighter with name ${name}`,
+    });
+  }
+};
+
+const deleteFighterById = async (req, res) => {
+  const fighterId = req.params.id;
+  try {
+    // const data = await Fighter.deleteOne({ id: fighterId });
+    const data = await Fighter.findByIdAndDelete({ _id: fighterId });
+    console.log(data);
+
+    if (data.deletedCount === 0) {
+      return res.status(404).send({
+        message: `Fighter with id ${fighterId} was not found`,
+      });
+    }
+    res.send({
+      message: `Fighter with id ${fighterId} was deleted successfully`,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({
+      message: `Could not delete Fighter with id ${fighterId}`,
     });
   }
 };
@@ -112,4 +134,5 @@ module.exports = {
   findByFighterName,
   deleteByFighterName,
   updateById,
+  deleteFighterById,
 };

@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { createSchedule } from '../../../services/ScheduleHttp';
 import { retrieveFighter } from '../../../services/FighterHttp';
 import Autocomplete from '@mui/material/Autocomplete';
-import ShowAlert from './ShowAlert';
+import ShowAlert from '../../UI/ShowAlert';
 import SendIcon from '@mui/icons-material/Send';
 
 const CrateNewSchedule = (props) => {
