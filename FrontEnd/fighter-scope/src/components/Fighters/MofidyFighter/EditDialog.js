@@ -49,8 +49,7 @@ const EditDialog = (props) => {
       <DialogContent style={{ fontSize: '1.8rem' }}>
         <DialogContentText>
           {' '}
-          To subscribe to this website, please enter your email address here. We
-          will send updates occasionally.
+          Please amend the information and select 'save' to confirm the changes.
         </DialogContentText>
         <TextField
           fullWidth

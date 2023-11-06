@@ -8,7 +8,8 @@ import ExistingFighter from './ExistingFighters/ExistingFighter';
 import EditFighter from './MofidyFighter/EditFighter';
 
 const Fighters = () => {
-  const [fighters, setFighters] = useState([]);
+  const [fighters, setFighters] = useState();
+  const [filteredFighters, setFilteredFighters] = useState();
 
   useEffect(() => {
     retrieveFighter().then((data) => setFighters(data));
@@ -18,16 +19,19 @@ const Fighters = () => {
     setFighters([...updatedFighters]);
   };
 
+  const filterHandler = (filteredItems) => {
+    setFilteredFighters(filteredItems);
+  };
+
+  const fightersToDisplay = filteredFighters || fighters;
+
   return (
     <React.Fragment>
-      <SearchBar
-      // schedule={props.schedule}
-      // filterHandler={props.filterHandler}
-      />
+      <SearchBar fighters={fighters} filterHandler={filterHandler} />
       <NewFighter />
       <Card className='schedule-wrapper'>
-        {fighters.length > 0 &&
-          fighters.map((item) => (
+        {fighters &&
+          fightersToDisplay.map((item) => (
             <div className='inner-schedule-wrapper' key={item.id}>
               <ExistingFighter fighterInfo={item} />
               <EditFighter
