@@ -17,10 +17,15 @@
   text-align: left;
   margin-top: 0.1rem;
   margin-left: 1rem;
-  font-size: clamp(0.6rem, 1.8vw, 1.2rem);
+  font-size: clamp(0.6rem, 1.8vw, 1.1rem);
   /* font-size: 0.9rem; */
 }
 
 .icon {
   margin: 0.5rem 0.2rem 0rem 0.7rem;
+}
+
+.bolder {
+  font-weight: bold;
+  font-size: inherit; /* Make sure it inherits the font size */
 }

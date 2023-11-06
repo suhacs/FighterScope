@@ -14,3 +14,9 @@
   width: 78rem;
   margin: 0.2rem 3.5rem;
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

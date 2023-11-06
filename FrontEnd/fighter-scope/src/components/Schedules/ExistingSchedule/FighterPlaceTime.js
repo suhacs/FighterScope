@@ -11,22 +11,10 @@ function FighterPlaceTime(props) {
         {props.info.firstFighter} VS {props.info.secondFighter}
       </p>
       <p className='place-time'>
-        <img
-          className='icon'
-          src='/placeIcon.png'
-          alt='placeIcon'
-          width='11rem'
-          height='12rem'
-        ></img>
+        🌐
         {props.info.place}
-        <img
-          className='icon'
-          src='/timeIcon.png'
-          alt='timeIcon'
-          width='13rem'
-          height='13rem'
-        ></img>
-        <b>EST </b>
+        &nbsp;&nbsp; 🕐
+        <b className='bolder'>EST&nbsp;</b>
         {time}
       </p>
     </div>

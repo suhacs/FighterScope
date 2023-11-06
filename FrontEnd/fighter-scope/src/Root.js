@@ -1,6 +1,7 @@
 import HorizontalNav from './components/Nav/HorizontalNav';
 import VerticalNav from './components/Nav/VerticalNav';
 import { Outlet } from 'react-router-dom';
+import './GlobalSize.css';
 
 const RootLayout = () => {
   return (
