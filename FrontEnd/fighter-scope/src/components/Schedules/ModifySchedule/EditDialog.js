@@ -36,11 +36,8 @@ const EditDialog = (props) => {
       const index = props.scheduleData.indexOf(originalData);
       scheduleCopy[index] = updatedSchedule.data;
 
-      props.scheduleHandler(scheduleCopy);
-
-      setTimeout(() => {
-        props.closeHandler();
-      });
+      //   props.scheduleHandler(scheduleCopy);
+      props.closeHandler();
     } catch (error) {
       console.error(`Error occurred during updating the schedule!: ${error}`);
     }
@@ -52,8 +49,7 @@ const EditDialog = (props) => {
       <DialogContent style={{ fontSize: '1.8rem' }}>
         <DialogContentText>
           {' '}
-          To subscribe to this website, please enter your email address here. We
-          will send updates occasionally.
+          Please amend the information and select 'save' to confirm the changes.
         </DialogContentText>
         <Autocomplete
           id='size-small-standard'

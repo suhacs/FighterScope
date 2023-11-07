@@ -11,7 +11,7 @@ const ShowAlert = (props) => {
           severity='success'
           style={{ marginTop: '1rem', fontSize: '1rem' }}
         >
-          The schedule was successfully registered.
+          The data was successfully registered.
         </Alert>
       )}
       {props.onSubmitted === 'Error' && (
@@ -21,7 +21,7 @@ const ShowAlert = (props) => {
           style={{ marginTop: '1rem', fontSize: '1rem' }}
           className='invalid-error'
         >
-          Failed to register the schedule. Please try again.
+          Failed to register the data. Please try again.
         </Alert>
       )}
     </React.Fragment>

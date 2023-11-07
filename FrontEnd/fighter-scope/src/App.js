@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Schedule from './components/Schedules/Schedule';
-import HorizontalNav from './components/Nav/HorizontalNav';
-import VerticalNav from './components/Nav/VerticalNav';
 import { retrieveSchedule } from './services/ScheduleHttp';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './Root';
 import './App.css';
+import Fighters from './components/Fighters/Fighters';
+import SignIn from './components/Authentication/SignIn/SignIn';
 
 function App() {
   const [boxingSchedules, setBoxingSchedules] = useState();
@@ -22,25 +24,48 @@ function App() {
     setFilteredSchedule(filteredItems);
   };
 
-  return (
-    <div className='appWrapper'>
-      <div className='hor_nav'>
-        <HorizontalNav />
-      </div>
-      <div className='ver_nav'>
-        <VerticalNav />
-      </div>
-      <div className='contents'>
-        {boxingSchedules && (
-          <Schedule
-            schedule={filteredSchedule ? filteredSchedule : boxingSchedules}
-            scheduleHandler={scheduleHandler}
-            filterHandler={filterHandler}
-          />
-        )}
-      </div>
-    </div>
+  const router = useMemo(
+    () =>
+      createBrowserRouter([
+        {
+          path: '/',
+          element: <RootLayout />,
+          children: [
+            {
+              path: '/',
+              element: (
+                <div className='contents'>
+                  {boxingSchedules && boxingSchedules.length > 0 && (
+                    <Schedule
+                      schedule={
+                        filteredSchedule ? filteredSchedule : boxingSchedules
+                      }
+                      scheduleHandler={scheduleHandler}
+                      filterHandler={filterHandler}
+                    />
+                  )}
+                </div>
+              ),
+            },
+            {
+              path: '/fighter',
+              element: (
+                <div className='contents'>
+                  <Fighters />
+                </div>
+              ),
+            },
+          ],
+        },
+        {
+          path: '/SignIn',
+          element: <SignIn />,
+        },
+      ]),
+    [scheduleHandler, filterHandler]
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

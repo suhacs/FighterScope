@@ -4,7 +4,7 @@ import CreateNewSchedule from './CreateNewSchedule';
 
 import './CreateNewSchedule.css';
 
-const AddNewSchedule = () => {
+const NewSchedule = () => {
   const [scheduleUploader, setScheduleUploader] = useState(true);
 
   const scheduleHandler = () => {
@@ -19,4 +19,4 @@ const AddNewSchedule = () => {
   );
 };
 
-export default AddNewSchedule;
+export default NewSchedule;

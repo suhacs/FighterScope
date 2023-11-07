@@ -1,0 +1,22 @@
+.SignIn {
+  min-height: 100vh;
+  margin: auto;
+  width: 70%;
+  background-color: rgb(24, 34, 46);
+}
+
+.Deco {
+  margin-left: 25%;
+}
+
+.message {
+  color: white;
+  font-size: 6rem;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.red {
+  color: rgb(249, 89, 88);
+  font-size: 6rem;
+}
