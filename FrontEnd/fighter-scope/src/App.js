@@ -6,7 +6,7 @@ import { retrieveSchedule } from './services/ScheduleHttp';
 import './App.css';
 
 function App() {
-  const [boxingSchedules, setBoxingSchedules] = useState([]);
+  const [boxingSchedules, setBoxingSchedules] = useState();
   const [filteredSchedule, setFilteredSchedule] = useState();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function App() {
         <VerticalNav />
       </div>
       <div className='contents'>
-        {boxingSchedules.length > 0 && (
+        {boxingSchedules && (
           <Schedule
             schedule={filteredSchedule ? filteredSchedule : boxingSchedules}
             scheduleHandler={scheduleHandler}
