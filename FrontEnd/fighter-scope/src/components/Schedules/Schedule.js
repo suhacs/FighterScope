@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Card from '../UI/Card';
@@ -9,10 +9,29 @@ import CountDown from './ExistingSchedule/CountDown';
 import SearchBar from './SearchBar/SearchBar';
 import NewSchedule from './CrateSchedule/NewSchedule';
 import EditSchedule from './ModifySchedule/EditSchedule';
+import { getToken } from '../../data/token';
+import { getUserRole } from '../../data/token';
+import Welcome from '../UI/Welcome';
+import { getUserName } from '../../data/token';
 
 function Schedule(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState();
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const token = getToken();
+    token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+
+    const userRole = getUserRole();
+    userRole && setUserRole(userRole);
+
+    const userName = getUserName();
+    setUserName(userName);
+  }, []);
 
   const sortedSchedule = [...props.schedule].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
@@ -29,11 +48,12 @@ function Schedule(props) {
 
   return (
     <React.Fragment>
+      <Welcome userName={userName} />
       <SearchBar
         schedule={props.schedule}
         filterHandler={props.filterHandler}
       />
-      <NewSchedule />
+      {userRole === 'admin' && <NewSchedule />}
       <Card className='schedule-wrapper'>
         {itemsToShow.map(
           (item) =>
@@ -42,11 +62,13 @@ function Schedule(props) {
                 <DateBox date={item.date} />
                 <FighterPlaceTime info={item} date={item.date} />
                 <CountDown date={item.date} />
-                <EditSchedule
-                  scheduleData={props.schedule}
-                  scheduleHandler={props.scheduleHandler}
-                  scheduleInfo={item}
-                />
+                {userRole === 'admin' && (
+                  <EditSchedule
+                    scheduleData={props.schedule}
+                    scheduleHandler={props.scheduleHandler}
+                    scheduleInfo={item}
+                  />
+                )}
               </div>
             )
         )}

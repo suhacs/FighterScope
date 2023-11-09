@@ -8,7 +8,6 @@ let bcrypt = require('bcryptjs');
 
 const signUp = async (req, res) => {
   try {
-    console.log(req.body);
     const user = await createUser(req.body);
     await assignRoles(user, req.body.role);
     await user.save();
@@ -52,8 +51,9 @@ const signin = async (req, res) => {
       return res.status(401).send({ message: 'Invalid password' });
     }
 
-    const token = generateAuthToken(user);
-    const authorities = getUserAuthority(user);
+    const authorities = await getUserAuthority(user);
+    const isAdmin = authorities === 'admin';
+    const token = generateAuthToken(user, isAdmin);
 
     req.session.token = token;
 
@@ -78,14 +78,15 @@ const findUserByEmail = async (email) => {
   }
 };
 
-const generateAuthToken = (user) => {
-  return jwt.sign({ email: user.email }, process.env.secret, {
+const generateAuthToken = (user, isAdmin) => {
+  return jwt.sign({ email: user.email, isAdmin }, process.env.secret, {
     expiresIn: 86400,
   });
 };
 
-const getUserAuthority = (user) => {
-  return user.role.map((role) => role.name);
+const getUserAuthority = async (user) => {
+  const role = await Role.findById(user.role);
+  return role.name;
 };
 
 const signout = async (req, res) => {

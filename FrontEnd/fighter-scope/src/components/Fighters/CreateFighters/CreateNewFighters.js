@@ -43,8 +43,8 @@ const CrateNewFighters = (props) => {
   };
 
   const resetHandler = () => {
-    nameRef.current.value = '';
-    nationalityRef.current.value = '';
+    nameRef.current.value = null;
+    nationalityRef.current.value = null;
   };
 
   return (

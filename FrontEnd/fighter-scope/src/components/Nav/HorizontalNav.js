@@ -1,7 +1,15 @@
+import React, { useContext } from 'react';
 import './HorizontalNav.css';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../state/authContext';
+import { clearToken } from '../../data/token';
 
 function HorizontalNav() {
+  const { isLoggedIn } = useContext(AuthContext);
+  const handleLogout = () => {
+    clearToken();
+    window.location.reload();
+  };
   return (
     <div className='horizontal-nav'>
       <ul>
@@ -15,11 +23,27 @@ function HorizontalNav() {
             />
           </Link>
         </h2>
-        <li>
-          <Link to='signin' style={{ textDecoration: 'none', color: 'white' }}>
-            LOGIN
-          </Link>
-        </li>
+        {isLoggedIn ? (
+          <li>
+            <Link
+              onClick={handleLogout}
+              to='/'
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              LOGOUT
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link
+              to='signin'
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              LOGIN
+            </Link>
+          </li>
+        )}
+
         <li>SIGN UP</li>
         <li>
           <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>

@@ -24,6 +24,24 @@ const ShowAlert = (props) => {
           Failed to register the data. Please try again.
         </Alert>
       )}
+      {props.authError && (
+        <div className='warning'>
+          <Alert
+            variant='filled'
+            severity='warning'
+            style={{
+              marginTop: '0.2rem',
+              fontSize: '1rem',
+              borderRadius: '0px',
+              width: '25.8vw',
+              Height: '2vh',
+            }}
+            className='invalid-error'
+          >
+            {props.authError}
+          </Alert>
+        </div>
+      )}
     </React.Fragment>
   );
 };

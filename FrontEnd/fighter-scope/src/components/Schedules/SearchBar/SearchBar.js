@@ -36,7 +36,11 @@ function SearchBar(props) {
         <input className='search-bar' type='text' ref={inputRef} />
       </div>
       <div className='searchButton'>
-        <Button variant='contained' onClick={searchHandle}>
+        <Button
+          variant='contained'
+          onClick={searchHandle}
+          sx={{ borderRadius: '0' }}
+        >
           Search 🔍
         </Button>
       </div>

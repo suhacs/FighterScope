@@ -1,5 +1,5 @@
 const verifySignUp = require('../middlewares/verifySignUp');
-const controller = require('../controllers/auth.controller');
+const auth = require('../controllers/auth.controller');
 const cors = require('cors');
 const express = require('express');
 const app = express.Router();
@@ -19,9 +19,9 @@ module.exports = function (app) {
       verifySignUp.checkDuplicatedNickNameOrEmail,
       verifySignUp.checkRolesExisted,
     ],
-    controller.signUp
+    auth.signUp
   );
 
-  app.post('/api/auth/signin', controller.signin);
-  app.post('/api/auth/signout', controller.signout); // Added forward slash
+  app.post('/api/auth/signin', auth.signin);
+  app.post('/api/auth/signout', auth.signout); // Added forward slash
 };

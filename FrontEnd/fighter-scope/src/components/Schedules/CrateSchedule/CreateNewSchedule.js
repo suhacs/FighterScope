@@ -37,11 +37,8 @@ const CrateNewSchedule = (props) => {
       place: placeRef.current.value,
     };
 
-    console.log(scheduleData);
-
     try {
       const schedulePost = await createSchedule(scheduleData);
-      console.log(schedulePost);
       if (schedulePost) {
         setFormSubmitted('Display');
       } else {

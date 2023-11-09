@@ -1,3 +1,4 @@
+import React from 'react';
 import HorizontalNav from './HorizontalNav';
 import VerticalNav from './VerticalNav';
 import './NavBar.css';
