@@ -42,6 +42,41 @@ const ShowAlert = (props) => {
           </Alert>
         </div>
       )}
+      {props.signUpError && props.signUpError != 'NoError' && (
+        <div className='warning'>
+          <Alert
+            variant='filled'
+            severity='warning'
+            style={{
+              marginTop: '0.2rem',
+              fontSize: '1rem',
+              borderRadius: '0px',
+              width: '25.8vw',
+              Height: '2vh',
+            }}
+            className='invalid-error'
+          >
+            {props.signUpError}
+          </Alert>
+        </div>
+      )}
+      {props.signUpError === 'NoError' && (
+        <div className='warning'>
+          <Alert
+            variant='filled'
+            severity='success'
+            style={{
+              marginTop: '0.2rem',
+              fontSize: '1rem',
+              borderRadius: '0px',
+              width: '25.8vw',
+              Height: '2vh',
+            }}
+          >
+            Your account was successfully created!
+          </Alert>
+        </div>
+      )}
     </React.Fragment>
   );
 };

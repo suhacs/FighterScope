@@ -21,7 +21,7 @@ const checkDuplicatedNickNameOrEmail = async (req, res, next) => {
     if (existingEmailUser) {
       return res
         .status(400)
-        .send({ message: 'Failed the email is already in use' });
+        .send({ message: 'Failed! the email is already in use' });
     }
 
     next();

@@ -39,12 +39,16 @@ function HorizontalNav() {
               to='signin'
               style={{ textDecoration: 'none', color: 'white' }}
             >
-              LOGIN
+              LOG IN
             </Link>
           </li>
         )}
 
-        <li>SIGN UP</li>
+        <li>
+          <Link to='signup' style={{ textDecoration: 'none', color: 'white' }}>
+            SIGN UP
+          </Link>
+        </li>
         <li>
           <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
             HOME

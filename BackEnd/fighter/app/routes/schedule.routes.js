@@ -1,6 +1,7 @@
 module.exports = (app) => {
   const schedule = require('../controllers/schedule.controller');
   let router = require('express').Router();
+  const { isAdmin } = require('../middlewares/authJwt');
 
   router.post('/', schedule.createSchedule);
 

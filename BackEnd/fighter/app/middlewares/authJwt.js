@@ -30,15 +30,13 @@ const isAdmin = async (req, res, next) => {
 
     const roles = await Role.find({ _id: { $in: user.roles } }).exec();
 
-    for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === 'admin') {
-        next();
-        return;
-      }
+    if (roles.some((role) => role.name === 'admin')) {
+      next();
+    } else {
+      res.status(403).send({ message: 'Require Admin Role!' });
     }
-    res.status(403).send({ message: 'Require Admin Role!' });
   } catch (err) {
-    res.status(500).send({ message: err });
+    res.status(500).send({ message: err.message || 'Internal Server Error' });
   }
 };
 

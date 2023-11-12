@@ -48,7 +48,7 @@ function Schedule(props) {
 
   return (
     <React.Fragment>
-      <Welcome userName={userName} />
+      {isLoggedIn && <Welcome userName={userName} />}
       <SearchBar
         schedule={props.schedule}
         filterHandler={props.filterHandler}

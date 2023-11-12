@@ -6,6 +6,7 @@ import RootLayout from './Root';
 import './App.css';
 import Fighters from './components/Fighters/Fighters';
 import SignIn from './components/Authentication/SignIn/SignIn';
+import SignUp from './components/Authentication/SignUp/SignUp';
 
 function App() {
   const [boxingSchedules, setBoxingSchedules] = useState();
@@ -58,8 +59,12 @@ function App() {
           ],
         },
         {
-          path: '/SignIn',
+          path: '/signin',
           element: <SignIn />,
+        },
+        {
+          path: '/signup',
+          element: <SignUp />,
         },
       ]),
     [scheduleHandler, filterHandler]

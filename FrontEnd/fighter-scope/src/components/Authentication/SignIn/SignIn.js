@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from './SignIn.module.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -8,49 +8,63 @@ import { signIn } from '../../../services/AuthHttp';
 import { saveToken } from '../../../data/token';
 import { useNavigate } from 'react-router-dom';
 import ShowAlert from '../../UI/ShowAlert';
+import { getToken } from '../../../data/token';
+import { clearToken } from '../../../data/token';
 
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [authError, setAuthError] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const idRef = useRef();
+  const buttonText = isLoggedIn ? 'Log out' : 'Sign In';
+
+  useEffect(() => {
+    const token = getToken();
+    token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [isLoggedIn]);
+
+  const emailRef = useRef();
   const passwdRef = useRef();
   const navigate = useNavigate();
 
-  const handleSignIn = async () => {
-    setIsLoading(true);
-    setAuthError();
+  const handleSignInOrLogOut = async () => {
     const userData = {
-      id: idRef.current.value,
+      id: emailRef.current.value,
       password: passwdRef.current.value,
     };
 
-    const noData = !idRef.current.value || !passwdRef.current.value;
+    const noData = !emailRef.current.value || !passwdRef.current.value;
     const isValidEmail =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    if (noData) {
-      setAuthError('Please fill in both email and password');
-      setTimeout(() => setAuthError(), [3000]);
-    } else if (!idRef.current.value.match(isValidEmail)) {
-      setAuthError('Please check the email format');
-    }
+    setAuthError();
+    isLoggedIn && clearToken() && window.location.reload();
 
-    try {
-      const userAuthInfo = await signIn(userData);
-      if (userAuthInfo) {
-        saveToken(userAuthInfo);
-        setIsLoading(false);
-        navigate(-1);
-      } else {
-        setIsLoading(false);
-        setAuthError('Invalid email address or password');
-        setTimeout(() => setAuthError(), [3000]);
+    if (noData) {
+      setAuthError('Please fill in both email and password!');
+      setTimeout(() => setAuthError(), [3000]);
+    } else if (!isValidEmail.test(emailRef.current.value)) {
+      setAuthError('Please check the email format!');
+      setTimeout(() => setAuthError(), [3000]);
+    } else {
+      try {
+        setIsLoading(true);
+        const userAuthInfo = await signIn(userData);
+        if (userAuthInfo) {
+          saveToken(userAuthInfo);
+          setIsLoading(false);
+          navigate('/');
+        } else {
+          setIsLoading(false);
+          setAuthError('Invalid email address or password');
+          setTimeout(() => setAuthError(), [3000]);
+        }
+      } catch (err) {
+        console.log('Error occured !' + err);
       }
-    } catch (err) {
-      console.log('Error occured !');
     }
   };
+
   return (
     <div className={styles.SignIn}>
       <img
@@ -63,40 +77,43 @@ const SignIn = () => {
         WELCOME TO <br />
         <span className={styles.red}>FIGHTER SCOPE</span>
       </h1>
-      <Box
-        component='form'
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          '& > :not(style)': { m: '1.2rem', width: '27.5vw', height: '5vh' },
-          '& input': { backgroundColor: 'white' },
-        }}
-        autoComplete='on'
-        className={styles.textFieldContainer}
-      >
-        <TextField
-          id='outlined-basic'
-          label='Email Address'
-          variant='filled'
-          inputRef={idRef}
-          type='email'
-          required
-        />
-        <TextField
-          id='outlined-basic'
-          label='Password'
-          variant='filled'
-          type='password'
-          inputRef={passwdRef}
-          required
-        />
-      </Box>
+
+      {!isLoggedIn && (
+        <Box
+          component='form'
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            '& > :not(style)': { m: '1.2rem', width: '27.5vw', height: '5vh' },
+            '& input': { backgroundColor: 'white' },
+          }}
+          autoComplete='on'
+          className={styles.textFieldContainer}
+        >
+          <TextField
+            id='outlined-basic'
+            label='Email Address'
+            variant='filled'
+            inputRef={emailRef}
+            type='email'
+            required
+          />
+          <TextField
+            id='outlined-basic'
+            label='Password'
+            variant='filled'
+            type='password'
+            inputRef={passwdRef}
+            required
+          />
+        </Box>
+      )}
       <div className={styles.button}>
         <Button
           variant='contained'
           size='large'
-          onClick={handleSignIn}
+          onClick={handleSignInOrLogOut}
           sx={{
             width: '27.5vw',
             minHeight: '5vh',
@@ -109,13 +126,23 @@ const SignIn = () => {
           }}
           style={{ fontSize: '0.7vw' }}
         >
-          Sign In
+          {buttonText}
         </Button>
       </div>
       <ShowAlert authError={authError} />
-      <div className={styles.noaccount}>
-        No account? <span className={styles.signup}>Sign up</span>{' '}
-      </div>
+      {!isLoggedIn && (
+        <div className={styles.noaccount}>
+          No account?{' '}
+          <span className={styles.signup}>
+            <a
+              href='/signup'
+              style={{ textDecoration: 'none', color: '#CDE880' }}
+            >
+              Sign up
+            </a>
+          </span>{' '}
+        </div>
+      )}
       {isLoading && (
         <Box
           sx={{
