@@ -1,8 +1,38 @@
 import React, { useContext } from 'react';
-import './HorizontalNav.css';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../state/authContext';
 import { clearToken } from '../../data/token';
+import Box from '@mui/material/Box';
+
+const navContainerStyle = {
+  height: '100%',
+  width: '100%',
+  backgroundColor: 'rgb(24, 34, 46)',
+};
+
+const titleStyle = {
+  color: 'white',
+  fontSize: '1.8rem',
+  float: 'left',
+  margin: '0.7rem 3rem',
+  position: 'relative',
+  left: '6.4rem',
+  fontFamily: 'Staatliches, sans-serif',
+};
+
+const navLiStyle = {
+  float: 'right',
+  margin: '3rem 2rem',
+  fontFamily: 'Staatliches, sans-serif',
+  display: 'flex',
+  alignItems: 'center',
+};
+
+const navLinkStyle = {
+  textDecoration: 'none',
+  color: 'white',
+  fontSize: '2rem',
+};
 
 function HorizontalNav() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -10,53 +40,50 @@ function HorizontalNav() {
     clearToken();
     window.location.reload();
   };
-  return (
-    <div className='horizontal-nav'>
-      <ul>
-        <h2 className='title'>
-          <Link to='/'>
-            <img
-              className='icon'
-              src='/fighter_scope_logo.png'
-              alt='logo'
-              height='100rem'
-            />
-          </Link>
-        </h2>
-        {isLoggedIn ? (
-          <li>
-            <Link
-              onClick={handleLogout}
-              to='/'
-              style={{ textDecoration: 'none', color: 'white' }}
-            >
-              LOGOUT
-            </Link>
-          </li>
-        ) : (
-          <li>
-            <Link
-              to='signin'
-              style={{ textDecoration: 'none', color: 'white' }}
-            >
-              LOG IN
-            </Link>
-          </li>
-        )}
 
-        <li>
-          <Link to='signup' style={{ textDecoration: 'none', color: 'white' }}>
-            SIGN UP
-          </Link>
-        </li>
-        <li>
-          <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
-            HOME
-          </Link>
-        </li>
-      </ul>
-      {/* <h3>Find your favorite fighter!</h3> */}
-    </div>
+  return (
+    <Box className='horizontal-nav' sx={navContainerStyle}>
+      <Box component='h2' className='title' sx={titleStyle}>
+        <Link to='/'>
+          <img
+            className='icon'
+            src='/fighter_scope_logo.png'
+            alt='logo'
+            height='100rem'
+          />
+        </Link>
+      </Box>
+      <Box>
+        <ul>
+          {isLoggedIn ? (
+            <li style={navLiStyle}>
+              <Link onClick={handleLogout} to='/' style={navLinkStyle}>
+                LOGOUT
+              </Link>
+            </li>
+          ) : (
+            <li style={navLiStyle}>
+              <Link to='signin' style={navLinkStyle}>
+                LOG IN
+              </Link>
+            </li>
+          )}
+
+          {!isLoggedIn && (
+            <li style={navLiStyle}>
+              <Link to='signup' style={navLinkStyle}>
+                SIGN UP
+              </Link>
+            </li>
+          )}
+          <li style={navLiStyle}>
+            <Link to='/' style={navLinkStyle}>
+              HOME
+            </Link>
+          </li>
+        </ul>
+      </Box>
+    </Box>
   );
 }
 

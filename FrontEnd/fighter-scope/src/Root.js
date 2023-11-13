@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import './GlobalSize.css';
 import { getToken, getUserRole } from './data/token';
 import AuthContext from './state/authContext';
+import Stack from '@mui/material/Stack';
 
 const RootLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,18 +19,43 @@ const RootLayout = () => {
     userRole && setUserRole(userRole);
   }, []);
 
+  const gridContainerStyle = {
+    display: 'grid',
+    minHeight: '100vh',
+    backgroundColor: 'rgb(241, 241, 241)',
+    gridTemplateColumns: '11rem 8fr 2fr',
+    gridTemplateRows: '10rem auto 3rem',
+    gridTemplateAreas: `
+      'hor_nav hor_nav hor_nav'
+      'ver_nav contents news1'
+      'ver_nav contents news2'
+    `,
+  };
+
+  const horizontalNavStyle = {
+    direction: 'row',
+    className: 'hor_nav',
+    sx: { gridArea: 'hor_nav' },
+  };
+
+  const verticalNavStyle = {
+    direction: 'row',
+    className: 'ver_nav',
+    sx: { gridArea: 'ver_nav' },
+  };
+
   return (
-    <div className='appWrapper'>
+    <Stack direction='column' className='appWrapper' sx={gridContainerStyle}>
       <AuthContext.Provider value={{ isLoggedIn, userRole }}>
-        <div className='hor_nav'>
+        <Stack {...horizontalNavStyle}>
           <HorizontalNav />
-        </div>
-        <div className='ver_nav'>
+        </Stack>
+        <Stack {...verticalNavStyle}>
           <VerticalNav />
-        </div>
+        </Stack>
       </AuthContext.Provider>
       <Outlet />
-    </div>
+    </Stack>
   );
 };
 
