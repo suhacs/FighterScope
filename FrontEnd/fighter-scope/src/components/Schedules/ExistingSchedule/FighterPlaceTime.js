@@ -1,24 +1,46 @@
+import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import './FighterPlaceTime.css';
 
-function FighterPlaceTime(props) {
+const getWrapperStyle = () => ({
+  display: 'inline-block',
+});
+
+const getFightersStyle = () => ({
+  fontSize: 'clamp(1rem, 2.8vw, 1.8rem)',
+  fontWeight: 'bold',
+  textAlign: 'left',
+  marginLeft: '1rem',
+  marginTop: '1rem',
+  marginBottom: '0rem',
+});
+
+const getPlaceTimeStyle = () => ({
+  textAlign: 'left',
+  marginTop: '0.1rem',
+  marginLeft: '1rem',
+  fontSize: 'clamp(0.6rem, 1.8vw, 1.1rem)',
+});
+
+const FighterPlaceTime = (props) => {
   const time = props.date.toLocaleString(['en-US'], {
     hour: '2-digit',
     minute: '2-digit',
   });
+
   return (
-    <div className='fighter-place-time-wrapper'>
-      <p className='fighters'>
+    <Box sx={getWrapperStyle()} className='fighter-place-time-wrapper'>
+      <Typography sx={getFightersStyle()} className='fighters'>
         {props.info.firstFighter} VS {props.info.secondFighter}
-      </p>
-      <p className='place-time'>
-        🌐
-        {props.info.place}
-        &nbsp;&nbsp; 🕐
+      </Typography>
+      <Typography sx={getPlaceTimeStyle()} className='place-time'>
+        🌐 {props.info.place} &nbsp;&nbsp; 🕐
         <b className='bolder'>EST&nbsp;</b>
         {time}
-      </p>
-    </div>
+      </Typography>
+    </Box>
   );
-}
+};
 
 export default FighterPlaceTime;

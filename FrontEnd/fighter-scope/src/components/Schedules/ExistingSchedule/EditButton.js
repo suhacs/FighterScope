@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './EditSchedule.css';
+import './EditButton.css';
 import { retrieveFighter } from '../../../services/FighterHttp';
 import { retrieveSchedule } from '../../../services/ScheduleHttp';
 import SmallBtn from '../../UI/SmallBtn';
-import EditDialog from './EditDialog';
-import DeleteDialog from './DeleteDialog';
+import EditDialog from '../ModifySchedule/EditDialog';
+import DeleteDialog from '../ModifySchedule/DeleteDialog';
 
 const EditSchedule = (props) => {
   const [editDialog, setEditDialog] = useState(false);

@@ -24,30 +24,6 @@ const EditFighter = (props) => {
     setDeleteDialog(false);
   };
 
-  //   const getNameDefaultValue = () => {
-  //     const nameValue =
-  //       props.figtherData &&
-  //       props.figtherData((fighter) => fighter.name === props.fighterInfo.name);
-
-  //     if (nameValue) {
-  //       const { name } = nameValue;
-  //       return name;
-  //     }
-  //   };
-
-  //   const getNationalityDefaultValue = () => {
-  //     const nationalityValue =
-  //       props.figtherData &&
-  //       props.figtherData.find(
-  //         (fighter) => fighter.nationality === props.fighterInfo.nationality
-  //       );
-
-  //     if (nationalityValue) {
-  //       const { nationality } = nationalityValue;
-  //       return nationality;
-  //     }
-  //   };
-
   return (
     <div className='edit-button-wrapper-fighter'>
       <SmallBtn handleClickOpen={handleEditOpen} buttonType='edit'>

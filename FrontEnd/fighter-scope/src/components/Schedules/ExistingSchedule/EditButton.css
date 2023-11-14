@@ -1,0 +1,7 @@
+.edit-button-wrapper {
+  display: inline-block;
+  position: absolute;
+  left: 70%;
+  /* left: clamp(70rem, 75vw, 130rem); */
+  margin-top: 2.1rem;
+}

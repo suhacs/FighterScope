@@ -1,6 +1,6 @@
 .button {
   display: flex;
   justify-content: center;
-  margin: 1.5rem;
+  margin: auto;
   width: 78rem;
 }

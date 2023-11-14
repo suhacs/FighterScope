@@ -5,11 +5,15 @@ import { Outlet } from 'react-router-dom';
 import './GlobalSize.css';
 import { getToken, getUserRole } from './data/token';
 import AuthContext from './state/authContext';
-import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
+import MobileNav from './components/Nav/MobileNav';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 const RootLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState();
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down('xs'));
 
   useEffect(() => {
     const token = getToken();
@@ -21,41 +25,57 @@ const RootLayout = () => {
 
   const gridContainerStyle = {
     display: 'grid',
+    minWidth: '100vw',
     minHeight: '100vh',
     backgroundColor: 'rgb(241, 241, 241)',
-    gridTemplateColumns: '11rem 8fr 2fr',
+    gridTemplateColumns: '11rem 8fr',
     gridTemplateRows: '10rem auto 3rem',
     gridTemplateAreas: `
-      'hor_nav hor_nav hor_nav'
-      'ver_nav contents news1'
-      'ver_nav contents news2'
+      'hor_nav hor_nav'
+      'ver_nav contents'
+      'ver_nav contents'
     `,
   };
 
   const horizontalNavStyle = {
-    direction: 'row',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'stretch',
     className: 'hor_nav',
     sx: { gridArea: 'hor_nav' },
   };
 
   const verticalNavStyle = {
-    direction: 'row',
+    display: 'flex',
+    flexDirection: 'column',
+    width: '11rem',
+    minHeight: '100vh',
     className: 'ver_nav',
     sx: { gridArea: 'ver_nav' },
   };
 
+  const outletStyle = {
+    sx: { gridArea: 'contents' },
+  };
   return (
-    <Stack direction='column' className='appWrapper' sx={gridContainerStyle}>
+    <Grid
+      container
+      direction='column'
+      className='appWrapper'
+      sx={gridContainerStyle}
+    >
       <AuthContext.Provider value={{ isLoggedIn, userRole }}>
-        <Stack {...horizontalNavStyle}>
+        <Grid item {...horizontalNavStyle}>
           <HorizontalNav />
-        </Stack>
-        <Stack {...verticalNavStyle}>
+        </Grid>
+        <Grid item {...verticalNavStyle}>
           <VerticalNav />
-        </Stack>
+        </Grid>
       </AuthContext.Provider>
-      <Outlet />
-    </Stack>
+      <Grid item {...outletStyle}>
+        <Outlet />
+      </Grid>
+    </Grid>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import AddButton from '../../UI/AddButton';
 import CreateNewSchedule from './CreateNewSchedule';
-
 import './CreateNewSchedule.css';
+import { Box } from '@mui/material';
 
 const NewSchedule = () => {
   const [scheduleUploader, setScheduleUploader] = useState(true);
@@ -12,10 +12,10 @@ const NewSchedule = () => {
     setScheduleUploader(!scheduleUploader);
   };
   return (
-    <React.Fragment>
+    <div className='new-schedule-wrapper'>
       <AddButton onClick={scheduleHandler}>New Schedule 🗓️</AddButton>
       {scheduleUploader && <CreateNewSchedule />}
-    </React.Fragment>
+    </div>
   );
 };
 

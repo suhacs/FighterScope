@@ -1,7 +1,7 @@
 .edit-button-wrapper-fighter {
   display: inline-block;
   position: absolute;
-  left: clamp(55rem, 65vw, 115rem);
+  left: 80%;
   margin-top: -2.2rem;
   white-space: nowrap;
 }

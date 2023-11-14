@@ -8,7 +8,7 @@ import FighterPlaceTime from './ExistingSchedule/FighterPlaceTime';
 import CountDown from './ExistingSchedule/CountDown';
 import SearchBar from './SearchBar/SearchBar';
 import NewSchedule from './CrateSchedule/NewSchedule';
-import EditSchedule from './ModifySchedule/EditSchedule';
+import EditButton from './ExistingSchedule/EditButton';
 import { getToken } from '../../data/token';
 import { getUserRole } from '../../data/token';
 import Welcome from '../UI/Welcome';
@@ -48,7 +48,7 @@ function Schedule(props) {
 
   return (
     <React.Fragment>
-      {isLoggedIn && <Welcome userName={userName} />}
+      {/* {isLoggedIn && <Welcome userName={userName} />} */}
       <SearchBar
         schedule={props.schedule}
         filterHandler={props.filterHandler}
@@ -62,8 +62,9 @@ function Schedule(props) {
                 <DateBox date={item.date} />
                 <FighterPlaceTime info={item} date={item.date} />
                 <CountDown date={item.date} />
+
                 {userRole === 'admin' && (
-                  <EditSchedule
+                  <EditButton
                     scheduleData={props.schedule}
                     scheduleHandler={props.scheduleHandler}
                     scheduleInfo={item}
