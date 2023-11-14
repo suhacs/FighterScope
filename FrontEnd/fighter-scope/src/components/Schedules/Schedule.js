@@ -62,7 +62,6 @@ function Schedule(props) {
                 <DateBox date={item.date} />
                 <FighterPlaceTime info={item} date={item.date} />
                 <CountDown date={item.date} />
-
                 {userRole === 'admin' && (
                   <EditButton
                     scheduleData={props.schedule}

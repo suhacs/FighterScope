@@ -5,10 +5,12 @@ import { clearToken } from '../../data/token';
 import Box from '@mui/material/Box';
 
 const navContainerStyle = {
-  display: { xs: 'inline-block', md: 'inline-block', lg: 'inline-block' },
+  display: { xs: 'none', md: 'inline-block', lg: 'inline-block' },
   height: '100%',
   width: '100%',
   backgroundColor: 'rgb(24, 34, 46)',
+  position: 'sticky',
+  top: 0,
 };
 
 const titleStyle = {
@@ -37,6 +39,7 @@ const navLinkStyle = {
 
 function HorizontalNav() {
   const { isLoggedIn } = useContext(AuthContext);
+  const { userRole } = useContext(AuthContext);
   const handleLogout = () => {
     clearToken();
     window.location.reload();
@@ -77,12 +80,23 @@ function HorizontalNav() {
               </Link>
             </li>
           )}
-          <li style={navLiStyle}>
-            <Link to='/' style={navLinkStyle}>
-              HOME
-            </Link>
-          </li>
         </ul>
+        {userRole === 'admin' && (
+          <nav>
+            <ul>
+              <li style={navLiStyle}>
+                <Link to='/' style={navLinkStyle}>
+                  SCHEDULE
+                </Link>
+              </li>
+              <li style={navLiStyle}>
+                <Link to='/fighter' style={navLinkStyle}>
+                  FIGHTER
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        )}
       </Box>
     </Box>
   );

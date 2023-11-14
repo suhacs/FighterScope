@@ -1,7 +1,8 @@
 .search-bar {
+  position: relative;
   height: 2.3rem;
   width: 65rem;
-  margin: 2rem 0rem 0rem 6rem;
+  margin: 5rem 0rem 0rem 6rem;
   background-color: rgb(217, 217, 217);
   border: 0;
   font-size: 1.5rem;
@@ -14,6 +15,6 @@
   margin: 1.5rem auto;
 }
 .searchButton {
-  margin-top: 2rem;
+  margin-top: 5rem;
   white-space: nowrap;
 }
