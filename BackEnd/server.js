@@ -54,7 +54,7 @@ async function initializeRoles() {
 app.use(
   cors({
     credentials: true,
-    origin: ['https://fighter-scope.onrender.com'],
+    origin: ['https://fighter-scope.onrender.com', 'http://localhost:3000'],
   })
 );
 

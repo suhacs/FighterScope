@@ -11,7 +11,6 @@ import NewSchedule from './CrateSchedule/NewSchedule';
 import EditButton from './ExistingSchedule/EditButton';
 import { getToken } from '../../data/token';
 import { getUserRole } from '../../data/token';
-import Welcome from '../UI/Welcome';
 import { getUserName } from '../../data/token';
 
 function Schedule(props) {
