@@ -45,6 +45,10 @@ function HorizontalNav() {
     window.location.reload();
   };
 
+  const handleInitialize = () => {
+    window.location.reload();
+  };
+
   return (
     <Box sx={navContainerStyle}>
       <Box component='h2' className='title' sx={titleStyle}>
@@ -54,6 +58,7 @@ function HorizontalNav() {
             src='/fighter_scope_logo.png'
             alt='logo'
             height='100rem'
+            onClick={handleInitialize}
           />
         </Link>
       </Box>
