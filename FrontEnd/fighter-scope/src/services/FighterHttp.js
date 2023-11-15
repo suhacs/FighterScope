@@ -1,7 +1,7 @@
 export const retrieveFighter = async () => {
   try {
     const fighterResponse = await fetch(
-      'http://fighter-scope-data.onrender.com/fighter'
+      'https://fighter-scope-data.onrender.com/fighter'
     );
     if (!fighterResponse.ok) {
       throw new Error('Network response was not ok');
@@ -21,7 +21,7 @@ export const createFighter = async (formData) => {
     };
 
     const response = await fetch(
-      'http://fighter-scope-data.onrender.com/fighter',
+      'https://fighter-scope-data.onrender.com/fighter',
       {
         method: 'POST',
         headers: {
@@ -45,7 +45,7 @@ export const createFighter = async (formData) => {
 export const deleteFighterById = async (id) => {
   try {
     const response = await fetch(
-      `http://fighter-scope-data.onrender.com/fighter/${id}`,
+      `https://fighter-scope-data.onrender.com/fighter/${id}`,
       {
         method: 'DELETE',
       }
@@ -70,7 +70,7 @@ export const updateFighterById = async (id, fighter) => {
     };
 
     const response = await fetch(
-      `http://fighter-scope-data.onrender.com/fighter/${id}`,
+      `https://fighter-scope-data.onrender.com/fighter/${id}`,
       {
         method: 'PUT',
         headers: {

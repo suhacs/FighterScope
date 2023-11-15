@@ -12,7 +12,7 @@ export const signUp = async (user) => {
     };
 
     const userSignUp = await fetch(
-      'http://fighter-scope-data.onrender.com/api/auth/signup',
+      'https://fighter-scope-data.onrender.com/api/auth/signup',
       {
         method: 'POST',
         headers: {
@@ -39,7 +39,7 @@ export const signIn = async (user) => {
       password: user.password,
     };
     const userSignIn = await fetch(
-      'http://fighter-scope-data.onrender.com/api/auth/signin',
+      'https://fighter-scope-data.onrender.com/api/auth/signin',
       {
         method: 'POST',
         headers: {

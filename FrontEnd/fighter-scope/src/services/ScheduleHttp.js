@@ -22,10 +22,10 @@ export const retrieveSchedule = async () => {
 
   try {
     const scheduleResponse = await fetch(
-      'http://fighter-scope-data.onrender.com/schedule'
+      'https://fighter-scope-data.onrender.com/schedule'
     );
     const fighterResponse = await fetch(
-      'http://fighter-scope-data.onrender.com/fighter'
+      'https://fighter-scope-data.onrender.com/fighter'
     );
 
     if (!scheduleResponse.ok || !fighterResponse.ok) {
@@ -45,13 +45,13 @@ export const retrieveSchedule = async () => {
 export const createSchedule = async (formData) => {
   try {
     const fighter1Response = await fetch(
-      `http://fighter-scope-data.onrender.com/fighter/${formData.fighter_1}`
+      `https://fighter-scope-data.onrender.com/fighter/${formData.fighter_1}`
     );
 
     const firstFigtherId = await fighter1Response.json();
 
     const fighter2Response = await fetch(
-      `http://fighter-scope-data.onrender.com/fighter/${formData.fighter_2}`
+      `https://fighter-scope-data.onrender.com/fighter/${formData.fighter_2}`
     );
 
     const secondFighterId = await fighter2Response.json();
@@ -68,7 +68,7 @@ export const createSchedule = async (formData) => {
     };
 
     const response = await fetch(
-      'http://fighter-scope-data.onrender.com/schedule',
+      'https://fighter-scope-data.onrender.com/schedule',
       {
         method: 'POST',
         headers: {
@@ -92,7 +92,7 @@ export const createSchedule = async (formData) => {
 export const deleteScheduleById = async (id) => {
   try {
     const response = await fetch(
-      `http://fighter-scope-data.onrender.com/schedule/${id}`,
+      `https://fighter-scope-data.onrender.com/schedule/${id}`,
       {
         method: 'DELETE',
       }
@@ -113,12 +113,12 @@ export const deleteScheduleById = async (id) => {
 export const updateScheduleById = async (id, schedule) => {
   try {
     const fighter1Response = await fetch(
-      `http://fighter-scope-data.onrender.com/fighter/${schedule.fighter_1}`
+      `https://fighter-scope-data.onrender.com/fighter/${schedule.fighter_1}`
     );
     const firstFigther = await fighter1Response.json();
 
     const fighter2Response = await fetch(
-      `http://fighter-scope-data.onrender.com/fighter/${schedule.fighter_2}`
+      `https://fighter-scope-data.onrender.com/fighter/${schedule.fighter_2}`
     );
     const secondFighter = await fighter2Response.json();
 
@@ -139,7 +139,7 @@ export const updateScheduleById = async (id, schedule) => {
     console.log(updatedFormData);
 
     const response = await fetch(
-      `http://fighter-scope-data.onrender.com/schedule/${id}`,
+      `https://fighter-scope-data.onrender.com/schedule/${id}`,
       {
         method: 'PUT',
         headers: {
