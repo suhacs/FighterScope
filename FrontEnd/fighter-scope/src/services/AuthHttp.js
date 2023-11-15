@@ -11,13 +11,16 @@ export const signUp = async (user) => {
       password: user.password,
     };
 
-    const userSignUp = await fetch('http://localhost:8080/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userInfo),
-    });
+    const userSignUp = await fetch(
+      'http://fighter-scope-data.onrender.com/api/auth/signup',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInfo),
+      }
+    );
 
     if (!userSignUp.ok) {
       throw new Error('Network response was not ok');
@@ -35,13 +38,16 @@ export const signIn = async (user) => {
       email: user.id,
       password: user.password,
     };
-    const userSignIn = await fetch('http://localhost:8080/api/auth/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userInfo),
-    });
+    const userSignIn = await fetch(
+      'http://fighter-scope-data.onrender.com/api/auth/signin',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInfo),
+      }
+    );
 
     console.log(userSignIn);
 

@@ -1,6 +1,8 @@
 export const retrieveFighter = async () => {
   try {
-    const fighterResponse = await fetch('http://localhost:8080/fighter');
+    const fighterResponse = await fetch(
+      'http://fighter-scope-data.onrender.com/fighter'
+    );
     if (!fighterResponse.ok) {
       throw new Error('Network response was not ok');
     }
@@ -18,13 +20,16 @@ export const createFighter = async (formData) => {
       nationality: formData.nationality,
     };
 
-    const response = await fetch('http://localhost:8080/fighter', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedFormData),
-    });
+    const response = await fetch(
+      'http://fighter-scope-data.onrender.com/fighter',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -39,9 +44,12 @@ export const createFighter = async (formData) => {
 
 export const deleteFighterById = async (id) => {
   try {
-    const response = await fetch(`http://localhost:8080/fighter/${id}`, {
-      method: 'DELETE',
-    });
+    const response = await fetch(
+      `http://fighter-scope-data.onrender.com/fighter/${id}`,
+      {
+        method: 'DELETE',
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -61,13 +69,16 @@ export const updateFighterById = async (id, fighter) => {
       nationality: fighter.nationality,
     };
 
-    const response = await fetch(`http://localhost:8080/fighter/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedFormData),
-    });
+    const response = await fetch(
+      `http://fighter-scope-data.onrender.com/fighter/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');

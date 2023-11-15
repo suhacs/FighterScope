@@ -21,7 +21,7 @@ const ShowAlert = (props) => {
           style={{ marginTop: '1rem', fontSize: '1rem' }}
           className='invalid-error'
         >
-          Please fill in all the fields to register!.
+          Please fill in all the fields!
         </Alert>
       )}
       {props.authError && (
@@ -42,7 +42,7 @@ const ShowAlert = (props) => {
           </Alert>
         </div>
       )}
-      {props.signUpError && props.signUpError != 'NoError' && (
+      {props.signUpError && props.signUpError !== 'NoError' && (
         <div className='warning'>
           <Alert
             variant='filled'

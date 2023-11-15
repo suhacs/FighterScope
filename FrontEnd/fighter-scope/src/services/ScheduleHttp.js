@@ -21,8 +21,12 @@ export const retrieveSchedule = async () => {
   };
 
   try {
-    const scheduleResponse = await fetch('http://localhost:8080/schedule');
-    const fighterResponse = await fetch('http://localhost:8080/fighter');
+    const scheduleResponse = await fetch(
+      'http://fighter-scope-data.onrender.com/schedule'
+    );
+    const fighterResponse = await fetch(
+      'http://fighter-scope-data.onrender.com/fighter'
+    );
 
     if (!scheduleResponse.ok || !fighterResponse.ok) {
       throw new Error('Network response was not ok');
@@ -41,13 +45,13 @@ export const retrieveSchedule = async () => {
 export const createSchedule = async (formData) => {
   try {
     const fighter1Response = await fetch(
-      `http://localhost:8080/fighter/${formData.fighter_1}`
+      `http://fighter-scope-data.onrender.com/fighter/${formData.fighter_1}`
     );
 
     const firstFigtherId = await fighter1Response.json();
 
     const fighter2Response = await fetch(
-      `http://localhost:8080/fighter/${formData.fighter_2}`
+      `http://fighter-scope-data.onrender.com/fighter/${formData.fighter_2}`
     );
 
     const secondFighterId = await fighter2Response.json();
@@ -63,13 +67,16 @@ export const createSchedule = async (formData) => {
       fighter_2: secondFighterId[0].id,
     };
 
-    const response = await fetch('http://localhost:8080/schedule', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedFormData),
-    });
+    const response = await fetch(
+      'http://fighter-scope-data.onrender.com/schedule',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -84,9 +91,12 @@ export const createSchedule = async (formData) => {
 
 export const deleteScheduleById = async (id) => {
   try {
-    const response = await fetch(`http://localhost:8080/schedule/${id}`, {
-      method: 'DELETE',
-    });
+    const response = await fetch(
+      `http://fighter-scope-data.onrender.com/schedule/${id}`,
+      {
+        method: 'DELETE',
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -103,12 +113,12 @@ export const deleteScheduleById = async (id) => {
 export const updateScheduleById = async (id, schedule) => {
   try {
     const fighter1Response = await fetch(
-      `http://localhost:8080/fighter/${schedule.fighter_1}`
+      `http://fighter-scope-data.onrender.com/fighter/${schedule.fighter_1}`
     );
     const firstFigther = await fighter1Response.json();
 
     const fighter2Response = await fetch(
-      `http://localhost:8080/fighter/${schedule.fighter_2}`
+      `http://fighter-scope-data.onrender.com/fighter/${schedule.fighter_2}`
     );
     const secondFighter = await fighter2Response.json();
 
@@ -128,13 +138,16 @@ export const updateScheduleById = async (id, schedule) => {
 
     console.log(updatedFormData);
 
-    const response = await fetch(`http://localhost:8080/schedule/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedFormData),
-    });
+    const response = await fetch(
+      `http://fighter-scope-data.onrender.com/schedule/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
