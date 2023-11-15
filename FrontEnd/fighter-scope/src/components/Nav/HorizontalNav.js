@@ -5,7 +5,7 @@ import { clearToken } from '../../data/token';
 import Box from '@mui/material/Box';
 
 const navContainerStyle = {
-  display: { xs: 'none', md: 'inline-block', lg: 'inline-block' },
+  display: { xs: 'inline-block', md: 'inline-block', lg: 'inline-block' },
   height: '100%',
   width: '100%',
   backgroundColor: 'rgb(24, 34, 46)',
@@ -85,13 +85,13 @@ function HorizontalNav() {
           <nav>
             <ul>
               <li style={navLiStyle}>
-                <Link to='/' style={navLinkStyle}>
-                  SCHEDULE
+                <Link to='/fighter' style={navLinkStyle}>
+                  FIGHTER
                 </Link>
               </li>
               <li style={navLiStyle}>
-                <Link to='/fighter' style={navLinkStyle}>
-                  FIGHTER
+                <Link to='/' style={navLinkStyle}>
+                  SCHEDULE
                 </Link>
               </li>
             </ul>

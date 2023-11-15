@@ -1,0 +1,12 @@
+.footer {
+  margin: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  background-color: 'rgb(241, 241, 241)';
+}
+
+.footerBox {
+  height: 10vh;
+  background-color: 'rgb(241, 241, 241)';
+  margin: 0;
+}

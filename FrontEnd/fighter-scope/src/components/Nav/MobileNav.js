@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const getMobileNavStyle = () => ({
-  display: { xs: 'inline-block', md: 'none', lg: 'none' },
+  display: { xs: 'flex', md: 'none', lg: 'none' },
   flexGrow: 1,
   width: '100%',
 });
@@ -28,9 +28,10 @@ const MobileNav = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            News
+            Fighter Scoe
           </Typography>
           <Button color='inherit'>Login</Button>
+          <Button color='inherit'>Signup</Button>
         </Toolbar>
       </AppBar>
     </Box>

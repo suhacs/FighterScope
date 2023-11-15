@@ -13,6 +13,16 @@ const commonInputStyle = {
   },
 };
 
+const NewScheduleBox = {
+  height: '28rem',
+  width: '68rem',
+  margin: '1rem auto',
+  bgcolor: 'rgb(255, 255, 255)',
+  border: '2px solid',
+  borderColor: 'rgb(180, 180, 180)',
+  borderRadius: '60px',
+};
+
 const CreateNewSchedule = () => {
   const [fighters, setFighters] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState('NoDisplay');
@@ -40,11 +50,14 @@ const CreateNewSchedule = () => {
     };
 
     try {
-      await createSchedule(scheduleData);
-      setFormSubmitted('Display');
+      const newSchedule = await createSchedule(scheduleData);
+      if (newSchedule) {
+        setFormSubmitted('Display');
+      } else {
+        setFormSubmitted('Error');
+      }
     } catch (error) {
       console.error('Error occurred during POST request:', error);
-      setFormSubmitted('Error');
     }
 
     setTimeout(() => {
@@ -60,7 +73,7 @@ const CreateNewSchedule = () => {
   };
 
   return (
-    <div className='newScheduleBox'>
+    <Box sx={NewScheduleBox}>
       <Container>
         <form onSubmit={handleSubmit}>
           <Autocomplete
@@ -131,7 +144,7 @@ const CreateNewSchedule = () => {
           </Box>
         </form>
       </Container>
-    </div>
+    </Box>
   );
 };
 

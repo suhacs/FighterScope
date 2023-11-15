@@ -19,6 +19,7 @@ function SearchBar(props) {
             item.place.toLowerCase().includes(inputData)
         );
         props.filterHandler(filteredSchedules);
+        props.pageHandler();
       } else if (props.fighters) {
         const filteredFighters = props.fighters.filter(
           (item) =>
@@ -26,6 +27,7 @@ function SearchBar(props) {
             item.nationality.toLowerCase().includes(inputData)
         );
         props.filterHandler(filteredFighters);
+        props.pageHandler();
       }
     }
   };

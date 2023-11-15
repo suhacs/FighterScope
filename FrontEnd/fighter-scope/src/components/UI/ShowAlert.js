@@ -21,7 +21,7 @@ const ShowAlert = (props) => {
           style={{ marginTop: '1rem', fontSize: '1rem' }}
           className='invalid-error'
         >
-          Failed to register the data. Please try again.
+          Please fill in all the fields to register!.
         </Alert>
       )}
       {props.authError && (

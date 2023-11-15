@@ -110,7 +110,7 @@ const SignUp = () => {
           inputRef={passwordRef}
           required
         />
-        <span className={styles.password}>* Password minimum 8 characters</span>
+        <span className={styles.password}>* Password minimum 9 characters</span>
       </Box>
       <div className={styles.button}>
         <Button

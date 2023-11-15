@@ -37,6 +37,9 @@ function Schedule(props) {
     (a, b) => new Date(a.date) - new Date(b.date)
   );
 
+  const setFirstPage = () => {
+    setCurrentPage(1);
+  };
   const totalItems = sortedSchedule.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -52,6 +55,7 @@ function Schedule(props) {
       <SearchBar
         schedule={props.schedule}
         filterHandler={props.filterHandler}
+        pageHandler={setFirstPage}
       />
       {userRole === 'admin' && <NewSchedule />}
       <Card className='schedule-wrapper'>

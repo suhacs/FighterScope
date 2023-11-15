@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import HorizontalNav from './components/Nav/HorizontalNav';
-import VerticalNav from './components/Nav/VerticalNav';
 import { Outlet } from 'react-router-dom';
 import './GlobalSize.css';
 import { getToken, getUserRole } from './data/token';
 import AuthContext from './state/authContext';
-import { useTheme, useMediaQuery, Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
+import Footer from './components/UI/Footer';
 
 const RootLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState();
-  const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down('xs'));
 
   useEffect(() => {
     const token = getToken();
@@ -22,9 +20,6 @@ const RootLayout = () => {
   }, []);
 
   const horizontalNavStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'stretch',
     position: 'fixed',
     width: '100%',
     height: '9rem',
@@ -37,14 +32,16 @@ const RootLayout = () => {
   };
 
   const contentsStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
     minHeight: '100vh',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    margin: 'auto',
     backgroundColor: 'rgb(241, 241, 241)',
   };
 
   return (
-    <Box sx={contentsStyle}>
+    <Stack sx={contentsStyle}>
       <Box sx={horizontalNavStyle}>
         <AuthContext.Provider value={{ isLoggedIn, userRole }}>
           <HorizontalNav />
@@ -53,9 +50,10 @@ const RootLayout = () => {
       <Box sx={contentWrapperStyle}>
         <AuthContext.Provider value={{ isLoggedIn, userRole }}>
           <Outlet />
+          <Footer />
         </AuthContext.Provider>
       </Box>
-    </Box>
+    </Stack>
   );
 };
 
