@@ -7,6 +7,7 @@ import './App.css';
 import Fighters from './components/Fighters/Fighters';
 import SignIn from './components/Authentication/SignIn/SignIn';
 import SignUp from './components/Authentication/SignUp/SignUp';
+import Container from '@mui/material/Container';
 
 function App() {
   const [boxingSchedules, setBoxingSchedules] = useState();
@@ -25,6 +26,12 @@ function App() {
     setFilteredSchedule(filteredItems);
   };
 
+  const contents = {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    backgroundColor: 'rgb(241, 241, 241)',
+  };
+
   const router = useMemo(
     () =>
       createBrowserRouter([
@@ -35,7 +42,7 @@ function App() {
             {
               path: '/',
               element: (
-                <div className='contents'>
+                <Container sx={contents}>
                   {boxingSchedules && boxingSchedules.length > 0 && (
                     <Schedule
                       schedule={
@@ -45,15 +52,15 @@ function App() {
                       filterHandler={filterHandler}
                     />
                   )}
-                </div>
+                </Container>
               ),
             },
             {
               path: '/fighter',
               element: (
-                <div className='contents'>
+                <Container sx={contents}>
                   <Fighters />
-                </div>
+                </Container>
               ),
             },
           ],

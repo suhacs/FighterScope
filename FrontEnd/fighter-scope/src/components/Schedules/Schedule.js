@@ -12,6 +12,8 @@ import EditButton from './ExistingSchedule/EditButton';
 import { getToken } from '../../data/token';
 import { getUserRole } from '../../data/token';
 import { getUserName } from '../../data/token';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function Schedule(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,7 +52,6 @@ function Schedule(props) {
 
   return (
     <React.Fragment>
-      {/* {isLoggedIn && <Welcome userName={userName} />} */}
       <SearchBar
         schedule={props.schedule}
         filterHandler={props.filterHandler}

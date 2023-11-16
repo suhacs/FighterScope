@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import './FighterPlaceTime.css';
+import CountDown from './CountDown';
 
 const getWrapperStyle = () => ({
   display: 'inline-block',
