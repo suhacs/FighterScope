@@ -23,6 +23,15 @@
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 800px) {
+  .inner-schedule-wrapper {
+    display: inline-block;
+    border-bottom: 1px solid black;
+    width: 65%;
+    margin: 0.3rem 3.5rem;
+  }
+}
+
 @media only screen and (max-width: 414px) {
   .inner-schedule-wrapper {
     display: block;

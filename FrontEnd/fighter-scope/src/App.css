@@ -2,9 +2,16 @@
   margin-left: auto;
   margin-right: auto;
   background-color: rgb(241, 241, 241);
+  width: 100vw;
 }
 
 @media all and (max-width: 414px) {
+  .contents {
+    width: 100vw;
+  }
+}
+
+@media all and (max-width: 800px) {
   .contents {
     width: 100vw;
   }

@@ -21,7 +21,7 @@ const getPlaceTimeStyle = () => ({
   textAlign: 'left',
   marginTop: '0.1rem',
   marginLeft: '1rem',
-  fontSize: 'clamp(0.6rem, 1.8vw, 1.1rem)',
+  fontSize: 'clamp(0.7rem, 1.8vw, 1.1rem)',
 });
 
 const FighterPlaceTime = (props) => {

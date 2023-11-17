@@ -1,7 +1,7 @@
 .search-bar {
   position: relative;
   height: 2.3rem;
-  width: 69rem;
+  width: 65vw;
   margin: 5rem 0rem 0rem 6rem;
   background-color: rgb(217, 217, 217);
   border: 0;
@@ -23,11 +23,12 @@
   .search-bar {
     margin-top: 0rem;
     position: relative;
-    width: fit-content;
+    width: 70vw;
+    height: 32.83px;
   }
   .searchButton {
     margin-top: 0rem;
-    margin-right: 6.7rem;
+    margin-right: 6.1rem;
     white-space: nowrap;
   }
 }

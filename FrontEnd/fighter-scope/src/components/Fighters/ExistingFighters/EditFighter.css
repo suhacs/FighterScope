@@ -21,16 +21,16 @@
     position: absolute;
     color: rgb(255, 255, 255);
     background-color: rgb(53, 113, 186);
-    left: 22rem;
-    bottom: 0.7rem;
+    left: 21.5rem;
+    bottom: 0.1rem;
     border-radius: 5px;
   }
 
   .mobile-delete {
     font-size: 10px;
     position: absolute;
-    left: 24.2rem;
-    bottom: 0.7rem;
+    left: 24.5rem;
+    bottom: 0.1rem;
     border-radius: 5px;
     background-color: rgb(194, 50, 50);
     color: white;

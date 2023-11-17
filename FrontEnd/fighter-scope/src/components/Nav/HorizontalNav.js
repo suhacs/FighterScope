@@ -3,15 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../state/authContext';
 import { clearToken } from '../../data/token';
 import Box from '@mui/material/Box';
-
-const navContainerStyle = {
-  display: { xs: 'none', md: 'inline-block', lg: 'inline-block' },
-  height: '100%',
-  width: '100%',
-  backgroundColor: 'rgb(24, 34, 46)',
-  position: 'sticky',
-  top: 0,
-};
+import './HorizontalNav.css';
 
 const titleStyle = {
   color: 'white',
@@ -54,7 +46,7 @@ function HorizontalNav() {
   };
 
   return (
-    <Box sx={navContainerStyle}>
+    <div className='navContainerStyle'>
       <Box component='h2' className='title' sx={titleStyle}>
         <Link to='/'>
           <img
@@ -107,7 +99,7 @@ function HorizontalNav() {
           </nav>
         )}
       </Box>
-    </Box>
+    </div>
   );
 }
 
