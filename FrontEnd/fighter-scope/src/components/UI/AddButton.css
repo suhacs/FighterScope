@@ -4,3 +4,11 @@
   margin: auto;
   width: 78rem;
 }
+
+@media only screen and (max-width: 414px) {
+  .button {
+    display: block;
+    width: 10rem;
+    margin: auto;
+  }
+}

@@ -4,8 +4,10 @@ import { Outlet } from 'react-router-dom';
 import './GlobalSize.css';
 import { getToken, getUserRole } from './data/token';
 import AuthContext from './state/authContext';
-import { Box, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import Footer from './components/UI/Footer';
+import MobileNav from './components/Nav/MobileNav';
+import classes from './Root.module.css';
 
 const RootLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,18 +21,6 @@ const RootLayout = () => {
     userRole && setUserRole(userRole);
   }, []);
 
-  const horizontalNavStyle = {
-    position: 'fixed',
-    width: '100%',
-    height: '9rem',
-    zIndex: 1000,
-    backgroundColor: 'rgb(24, 34, 46)',
-  };
-
-  const contentWrapperStyle = {
-    paddingTop: '4rem',
-  };
-
   const contentsStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -42,17 +32,18 @@ const RootLayout = () => {
 
   return (
     <Stack sx={contentsStyle}>
-      <Box sx={horizontalNavStyle}>
+      <div className={classes.horizontalNavStyle}>
         <AuthContext.Provider value={{ isLoggedIn, userRole }}>
           <HorizontalNav />
+          <MobileNav />
         </AuthContext.Provider>
-      </Box>
-      <Box sx={contentWrapperStyle}>
+      </div>
+      <div className={classes.contentWrapperStyle}>
         <AuthContext.Provider value={{ isLoggedIn, userRole }}>
           <Outlet />
           <Footer />
         </AuthContext.Provider>
-      </Box>
+      </div>
     </Stack>
   );
 };

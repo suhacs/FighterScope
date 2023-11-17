@@ -18,7 +18,7 @@ const AddButton = (props) => {
         onClick={props.onClick}
         style={{ fontSize: '1.5rem' }}
       >
-        {props.children}
+        <span className='addbutton-words'>{props.children}</span>
       </Button>
     </div>
   );

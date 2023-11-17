@@ -12,6 +12,7 @@
 @media only screen and (max-width: 414px) {
   .edit-button-wrapper {
     display: none;
+    top: 2rem;
     left: 45rem;
   }
 
@@ -25,14 +26,14 @@
     color: rgb(0, 0, 0);
     background-color: rgb(204, 228, 136);
     left: 22.2rem;
-    bottom: 2rem;
+    bottom: 0.7rem;
     border-radius: 5px;
   }
 
   .mobile-delete {
     position: absolute;
     left: 24rem;
-    bottom: 2rem;
+    bottom: 0.7rem;
     border-radius: 5px;
     background-color: black;
     color: white;

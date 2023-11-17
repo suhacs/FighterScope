@@ -10,7 +10,7 @@
 
 @media all and (max-width: 414px) {
   .count-down {
-    margin-bottom: 2rem;
-    margin-left: 9rem;
+    margin-top: 2.2rem;
+    margin-left: -1rem;
   }
 }

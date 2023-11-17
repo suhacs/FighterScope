@@ -6,6 +6,6 @@
 
 @media all and (max-width: 414px) {
   .contents {
-    width: 100%;
+    width: 100vw;
   }
 }

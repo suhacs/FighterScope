@@ -16,7 +16,7 @@ const NewSchedule = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className='new-schedule-wrapper'>
-        <AddButton onClick={scheduleHandler}>New Schedule 🗓️</AddButton>
+        <AddButton onClick={scheduleHandler}> NEW 🗓️</AddButton>
         {scheduleUploader && <CreateNewSchedule />}
       </div>
     </ThemeProvider>

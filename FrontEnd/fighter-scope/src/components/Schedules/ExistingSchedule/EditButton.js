@@ -105,8 +105,12 @@ const EditSchedule = (props) => {
         />
       </div>
       <div className='mobile-edit-button'>
-        <button className='mobile-edit'>Edit</button>
-        <button className='mobile-delete'>Delete</button>
+        <button className='mobile-edit' onClick={handleEditOpen}>
+          Edit
+        </button>
+        <button className='mobile-delete' onClick={handleDeleteOpen}>
+          Delete
+        </button>
       </div>
     </React.Fragment>
   );

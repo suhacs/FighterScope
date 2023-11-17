@@ -29,4 +29,8 @@
     width: 29rem;
     margin: auto;
   }
+
+  .schedule-wrapper {
+    display: inline;
+  }
 }

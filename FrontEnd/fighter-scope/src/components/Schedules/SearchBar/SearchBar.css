@@ -21,12 +21,12 @@
 
 @media all and (max-width: 414px) {
   .search-bar {
-    width: 85%; /* Resize the search bar to 85% of the viewport width */
-    margin-right: 1rem;
+    margin-top: 0rem;
+    position: relative;
+    width: fit-content;
   }
-
   .searchButton {
-    margin-top: 5rem;
+    margin-top: 0rem;
     margin-right: 6.7rem;
     white-space: nowrap;
   }
