@@ -7,7 +7,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { retrieveFighter } from '../../services/FighterHttp';
 import ExistingFighter from './ExistingFighters/ExistingFighter';
-import EditFighter from './MofidyFighter/EditFighter';
+import EditFighter from './ExistingFighters/EditFighter';
 
 const Fighters = () => {
   const [fighters, setFighters] = useState();

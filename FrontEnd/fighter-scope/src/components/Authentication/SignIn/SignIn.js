@@ -85,8 +85,9 @@ const SignIn = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            '& > :not(style)': { m: '1.2rem', width: '27.5vw', height: '5vh' },
+            '& > :not(style)': { m: '1.2rem', width: '70%', height: '5vh' },
             '& input': { backgroundColor: 'white' },
+            marginTop: '15rem',
           }}
           autoComplete='on'
           className={styles.textFieldContainer}
@@ -115,7 +116,7 @@ const SignIn = () => {
           size='large'
           onClick={handleSignInOrLogOut}
           sx={{
-            width: '27.5vw',
+            width: '60%',
             minHeight: '5vh',
             borderRadius: 0,
             backgroundColor: '#CDE880',
@@ -124,7 +125,7 @@ const SignIn = () => {
             },
             color: 'black',
           }}
-          style={{ fontSize: '0.7vw' }}
+          style={{ fontSize: '1rem' }}
         >
           {buttonText}
         </Button>

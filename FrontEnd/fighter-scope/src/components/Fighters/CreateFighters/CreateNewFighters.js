@@ -9,10 +9,10 @@ import ShowAlert from '../../UI/ShowAlert';
 import SendIcon from '@mui/icons-material/Send';
 import './CreateNewFighters.css';
 import { countries } from '../../../data/countries';
+import { styled } from '@mui/material/styles';
 
 const CrateNewFighters = (props) => {
   const [formSubmitted, setFormSubmitted] = useState('NoDisplay');
-
   const nameRef = useRef(null);
   const nationalityRef = useRef(null);
 
@@ -84,7 +84,7 @@ const CrateNewFighters = (props) => {
           <ShowAlert onSubmitted={formSubmitted} />
           <Box textAlign='center'>
             <Button
-              size='large'
+              size='medium'
               variant='contained'
               type='submit'
               onClick={handleSubmit}
@@ -94,7 +94,7 @@ const CrateNewFighters = (props) => {
               Send
             </Button>
             <Button
-              size='large'
+              size='medium'
               variant='outlined'
               onClick={resetHandler}
               style={{ margin: '2rem', marginTop: '3rem' }}

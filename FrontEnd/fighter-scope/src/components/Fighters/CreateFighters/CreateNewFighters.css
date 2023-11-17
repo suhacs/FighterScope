@@ -1,5 +1,5 @@
 .newFighterBox {
-  height: 28crem;
+  height: 28rem;
   width: 68rem;
   margin: 1.5rem auto;
 
@@ -11,4 +11,11 @@
 
 form {
   margin: 2rem;
+}
+
+@media only screen and (max-width: 414px) {
+  .newFighterBox {
+    width: 27rem;
+    height: 24rem;
+  }
 }

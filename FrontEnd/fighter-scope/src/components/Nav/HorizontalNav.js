@@ -42,11 +42,15 @@ function HorizontalNav() {
   const { userRole } = useContext(AuthContext);
   const handleLogout = () => {
     clearToken();
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    });
   };
 
   const handleInitialize = () => {
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    });
   };
 
   return (

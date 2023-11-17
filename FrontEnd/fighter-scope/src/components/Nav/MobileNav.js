@@ -14,6 +14,7 @@ import { clearToken } from '../../data/token';
 import { Link } from 'react-router-dom';
 
 const MobileNav = () => {
+  const { userRole } = useContext(AuthContext);
   const { isLoggedIn } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -95,12 +96,16 @@ const MobileNav = () => {
                 <MenuItem onClick={handleMenuClose}>SIGN UP</MenuItem>
               </Link>
             )}
-            <Link to='/' style={navLinkStyleBlack}>
-              <MenuItem onClick={handleMenuClose}>MANAGE SCHEDULE</MenuItem>
-            </Link>
-            <Link to='/fighter' style={navLinkStyleBlack}>
-              <MenuItem onClick={handleMenuClose}>MANAGE FIGHTER</MenuItem>
-            </Link>
+            {userRole === 'admin' && (
+              <Link to='/' style={navLinkStyleBlack}>
+                <MenuItem onClick={handleMenuClose}>MANAGE SCHEDULE</MenuItem>
+              </Link>
+            )}
+            {userRole === 'admin' && (
+              <Link to='/fighter' style={navLinkStyleBlack}>
+                <MenuItem onClick={handleMenuClose}>MANAGE FIGHTER</MenuItem>
+              </Link>
+            )}
           </Menu>
         </Toolbar>
       </AppBar>

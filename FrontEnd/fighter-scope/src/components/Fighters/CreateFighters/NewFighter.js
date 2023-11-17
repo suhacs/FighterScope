@@ -10,7 +10,7 @@ const NewFighter = () => {
   };
   return (
     <React.Fragment>
-      <AddButton onClick={fighterHandler}>New Fighter 🤼‍♂️</AddButton>
+      <AddButton onClick={fighterHandler}>New 🤼‍♂️</AddButton>
       {fighterUploader && <CrateNewFighters />}
     </React.Fragment>
   );

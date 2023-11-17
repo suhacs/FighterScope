@@ -73,7 +73,7 @@ const SignUp = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          '& > :not(style)': { m: '1.2rem', width: '27.5vw', height: '5vh' },
+          '& > :not(style)': { m: '1.2rem', width: '70%', height: '5vh' },
           '& input': { backgroundColor: 'white' },
         }}
         autoComplete='on'
@@ -119,7 +119,7 @@ const SignUp = () => {
           onClick={handleSignUp}
           sx={{
             marginTop: '-1.7rem',
-            width: '27.5vw',
+            width: '60%',
             minHeight: '5vh',
             borderRadius: 0,
             backgroundColor: '#CDE880',
@@ -128,7 +128,7 @@ const SignUp = () => {
             },
             color: 'black',
           }}
-          style={{ fontSize: '0.7vw' }}
+          style={{ fontSize: '1rem' }}
         >
           Sign UP
         </Button>

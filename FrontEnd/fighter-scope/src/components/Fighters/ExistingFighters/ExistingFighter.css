@@ -1,0 +1,14 @@
+.fighters-existing {
+  font-size: clamp(1rem, 2.8vw, 1.8rem);
+  font-weight: bold;
+  text-align: left;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}
+
+@media only screen and (max-width: 414px) {
+  .fighters-existing {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -11,6 +11,6 @@
 @media all and (max-width: 414px) {
   .count-down {
     margin-top: 2.2rem;
-    margin-left: -1rem;
+    margin-left: 0.2rem;
   }
 }

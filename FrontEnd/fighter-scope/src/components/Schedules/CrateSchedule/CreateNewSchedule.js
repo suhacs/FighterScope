@@ -126,7 +126,7 @@ const CreateNewSchedule = () => {
 
           <Box textAlign='center' sx={{ margin: '2rem', marginTop: '3rem' }}>
             <Button
-              size='large'
+              size='medium'
               variant='contained'
               type='submit'
               startIcon={<SendIcon />}
@@ -134,7 +134,7 @@ const CreateNewSchedule = () => {
               Send
             </Button>
             <Button
-              size='large'
+              size='medium'
               variant='outlined'
               onClick={resetHandler}
               sx={{ marginLeft: '2rem' }}

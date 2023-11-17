@@ -33,7 +33,7 @@ const ShowAlert = (props) => {
               marginTop: '0.2rem',
               fontSize: '1rem',
               borderRadius: '0px',
-              width: '25.8vw',
+              width: '55%',
               Height: '2vh',
             }}
             className='invalid-error'
@@ -51,7 +51,7 @@ const ShowAlert = (props) => {
               marginTop: '0.2rem',
               fontSize: '1rem',
               borderRadius: '0px',
-              width: '25.8vw',
+              width: '55%',
               Height: '2vh',
             }}
             className='invalid-error'
@@ -69,7 +69,7 @@ const ShowAlert = (props) => {
               marginTop: '0.2rem',
               fontSize: '1rem',
               borderRadius: '0px',
-              width: '25.8vw',
+              width: '55%',
               Height: '2vh',
             }}
           >
