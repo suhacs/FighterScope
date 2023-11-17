@@ -42,7 +42,7 @@ const SmallBtn = (props) => {
           },
         }}
       >
-        {props.children}
+        <span className='buttonWords'>{props.children}</span>
       </Button>
     </ThemeProvider>
   );

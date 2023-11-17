@@ -26,12 +26,6 @@ function App() {
     setFilteredSchedule(filteredItems);
   };
 
-  const contents = {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    backgroundColor: 'rgb(241, 241, 241)',
-  };
-
   const router = useMemo(
     () =>
       createBrowserRouter([
@@ -42,7 +36,7 @@ function App() {
             {
               path: '/',
               element: (
-                <Container sx={contents}>
+                <div className='contents'>
                   {boxingSchedules && boxingSchedules.length > 0 && (
                     <Schedule
                       schedule={
@@ -52,15 +46,15 @@ function App() {
                       filterHandler={filterHandler}
                     />
                   )}
-                </Container>
+                </div>
               ),
             },
             {
               path: '/fighter',
               element: (
-                <Container sx={contents}>
+                <div className='contents'>
                   <Fighters />
-                </Container>
+                </div>
               ),
             },
           ],

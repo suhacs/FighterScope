@@ -7,3 +7,10 @@
   left: clamp(22em, 60vw, 25em);
   white-space: nowrap;
 }
+
+@media all and (max-width: 414px) {
+  .count-down {
+    margin-bottom: 2rem;
+    margin-left: 9rem;
+  }
+}

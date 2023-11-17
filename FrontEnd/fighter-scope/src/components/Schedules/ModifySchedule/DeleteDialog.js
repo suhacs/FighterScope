@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './DeleteDialog.module.css';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -13,7 +14,7 @@ const DeleteDialog = (props) => {
     // props.scheduleHandler(props.scheduleData);
   };
   return (
-    <div>
+    <div className={styles.deleteDialog}>
       <Dialog
         open={props.open}
         onClose={props.closeHandler}

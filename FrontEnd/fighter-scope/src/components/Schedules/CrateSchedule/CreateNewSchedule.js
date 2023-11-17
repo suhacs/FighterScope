@@ -73,7 +73,7 @@ const CreateNewSchedule = () => {
   };
 
   return (
-    <Box sx={NewScheduleBox}>
+    <div className='newScheduleBox'>
       <Container>
         <form onSubmit={handleSubmit}>
           <Autocomplete
@@ -144,7 +144,7 @@ const CreateNewSchedule = () => {
           </Box>
         </form>
       </Container>
-    </Box>
+    </div>
   );
 };
 

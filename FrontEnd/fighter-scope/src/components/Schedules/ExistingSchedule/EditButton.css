@@ -1,9 +1,40 @@
 .edit-button-wrapper {
   display: inline-block;
   position: absolute;
-  /* left: 235em; */
   left: clamp(60rem, 80vw, 65rem);
-
-  /* left: clamp(125em, 60vw, 25em); */
   margin-top: 2.1rem;
+}
+
+.mobile-edit-button {
+  display: none;
+}
+
+@media only screen and (max-width: 414px) {
+  .edit-button-wrapper {
+    display: none;
+    left: 45rem;
+  }
+
+  .mobile-edit-button {
+    display: flex;
+    position: relative;
+  }
+
+  .mobile-edit {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    background-color: rgb(204, 228, 136);
+    left: 22.2rem;
+    bottom: 2rem;
+    border-radius: 5px;
+  }
+
+  .mobile-delete {
+    position: absolute;
+    left: 24rem;
+    bottom: 2rem;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+  }
 }

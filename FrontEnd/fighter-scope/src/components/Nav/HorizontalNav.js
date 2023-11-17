@@ -5,7 +5,7 @@ import { clearToken } from '../../data/token';
 import Box from '@mui/material/Box';
 
 const navContainerStyle = {
-  display: { xs: 'inline-block', md: 'inline-block', lg: 'inline-block' },
+  display: { xs: 'none', md: 'inline-block', lg: 'inline-block' },
   height: '100%',
   width: '100%',
   backgroundColor: 'rgb(24, 34, 46)',

@@ -44,95 +44,98 @@ const EditDialog = (props) => {
   };
 
   return (
-    <Dialog open={props.open} onClose={props.closeHandler}>
-      <DialogTitle style={{ fontSize: '1.8rem' }}>Edit Schedule</DialogTitle>
-      <DialogContent style={{ fontSize: '1.8rem' }}>
-        <DialogContentText>
-          {' '}
-          Please amend the information and select 'save' to confirm the changes.
-        </DialogContentText>
-        <Autocomplete
-          id='size-small-standard'
-          size='small'
-          options={props.fighters}
-          getOptionLabel={(option) => option.name}
-          defaultValue={props.fighters.find(
-            (fighter) => fighter.name === props.scheduleInfo.firstFighter
-          )}
-          renderInput={(params) => (
-            <TextField
-              style={{ marginTop: '1rem' }}
-              {...params}
-              label='Fighter 1'
-              variant='standard'
-              InputLabelProps={{
-                shrink: true,
-              }}
-              inputRef={firstFighterRef}
-            />
-          )}
-        />
-        <Autocomplete
-          id='size-small-standard'
-          size='small'
-          options={props.fighters}
-          getOptionLabel={(option) => option.name}
-          defaultValue={props.fighters.find(
-            (fighter) => fighter.name === props.scheduleInfo.secondFighter
-          )}
-          renderInput={(params) => (
-            <TextField
-              style={{ marginTop: '1rem' }}
-              {...params}
-              label='Fighter 2'
-              variant='standard'
-              InputLabelProps={{
-                shrink: true,
-              }}
-              inputRef={secondFighterRef}
-            />
-          )}
-        />
-        <TextField
-          fullWidth
-          id='filled-required'
-          label='Place'
-          variant='standard'
-          InputLabelProps={{
-            shrink: true,
-          }}
-          style={{ marginTop: '1rem' }}
-          defaultValue={props.placeHandler()}
-          inputRef={placeRef}
-        />
+    <div>
+      <Dialog open={props.open} onClose={props.closeHandler}>
+        <DialogTitle style={{ fontSize: '1.8rem' }}>Edit Schedule</DialogTitle>
+        <DialogContent style={{ fontSize: '1.8rem' }}>
+          <DialogContentText>
+            {' '}
+            Please amend the information and select 'save' to confirm the
+            changes.
+          </DialogContentText>
+          <Autocomplete
+            id='size-small-standard'
+            size='small'
+            options={props.fighters}
+            getOptionLabel={(option) => option.name}
+            defaultValue={props.fighters.find(
+              (fighter) => fighter.name === props.scheduleInfo.firstFighter
+            )}
+            renderInput={(params) => (
+              <TextField
+                style={{ marginTop: '1rem' }}
+                {...params}
+                label='Fighter 1'
+                variant='standard'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputRef={firstFighterRef}
+              />
+            )}
+          />
+          <Autocomplete
+            id='size-small-standard'
+            size='small'
+            options={props.fighters}
+            getOptionLabel={(option) => option.name}
+            defaultValue={props.fighters.find(
+              (fighter) => fighter.name === props.scheduleInfo.secondFighter
+            )}
+            renderInput={(params) => (
+              <TextField
+                style={{ marginTop: '1rem' }}
+                {...params}
+                label='Fighter 2'
+                variant='standard'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputRef={secondFighterRef}
+              />
+            )}
+          />
+          <TextField
+            fullWidth
+            id='filled-required'
+            label='Place'
+            variant='standard'
+            InputLabelProps={{
+              shrink: true,
+            }}
+            style={{ marginTop: '1rem' }}
+            defaultValue={props.placeHandler()}
+            inputRef={placeRef}
+          />
 
-        <TextField
-          fullWidth
-          id='filled-required'
-          label='Date and Time'
-          variant='standard'
-          type='datetime-local'
-          InputLabelProps={{
-            shrink: true,
-          }}
-          InputProps={{ inputProps: {} }}
-          placeholder=''
-          style={{ marginTop: '1rem' }}
-          defaultValue={props.dateHandler()}
-          inputRef={dateRef}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button
-          onClick={() => {
-            updateSchedule();
-          }}
-        >
-          Save
-        </Button>
-        <Button onClick={props.closeHandler}>Cancel</Button>
-      </DialogActions>
-    </Dialog>
+          <TextField
+            fullWidth
+            id='filled-required'
+            label='Date and Time'
+            variant='standard'
+            type='datetime-local'
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{ inputProps: {} }}
+            placeholder=''
+            style={{ marginTop: '1rem' }}
+            defaultValue={props.dateHandler()}
+            inputRef={dateRef}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              updateSchedule();
+            }}
+          >
+            Save
+          </Button>
+          <Button onClick={props.closeHandler}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 

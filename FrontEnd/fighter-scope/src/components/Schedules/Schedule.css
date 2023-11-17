@@ -22,3 +22,11 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 414px) {
+  .inner-schedule-wrapper {
+    display: block;
+    width: 29rem;
+    margin: auto;
+  }
+}

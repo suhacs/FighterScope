@@ -3,3 +3,9 @@
   margin-right: auto;
   background-color: rgb(241, 241, 241);
 }
+
+@media all and (max-width: 414px) {
+  .contents {
+    width: 100%;
+  }
+}

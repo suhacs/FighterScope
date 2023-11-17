@@ -75,34 +75,40 @@ const EditSchedule = (props) => {
   };
 
   return (
-    <div className='edit-button-wrapper'>
-      <SmallBtn handleClickOpen={handleEditOpen} buttonType='edit'>
-        Edit
-      </SmallBtn>
-      <SmallBtn deleteHandler={handleDeleteOpen} buttonType='delete'>
-        Delete
-      </SmallBtn>
-      <EditDialog
-        fighters={fighters}
-        open={editDialog}
-        placeHandler={getPlaceDefaultValue}
-        dateHandler={getDateDefaultValue}
-        openHandler={handleEditOpen}
-        closeHandler={handleEditClose}
-        scheduleInfo={props.scheduleInfo}
-        scheduleHandler={props.scheduleHandler}
-        scheduleData={props.scheduleData}
-        countDown={props.countDownHandler}
-      />
-      <DeleteDialog
-        open={deleteDialog}
-        scheduleInfo={props.scheduleInfo}
-        openHandler={handleDeleteOpen}
-        closeHandler={handleDeleteClose}
-        scheduleHandler={props.scheduleHandler}
-        scheduleData={props.scheduleData}
-      />
-    </div>
+    <React.Fragment>
+      <div className='edit-button-wrapper'>
+        <SmallBtn handleClickOpen={handleEditOpen} buttonType='edit'>
+          Edit
+        </SmallBtn>
+        <SmallBtn deleteHandler={handleDeleteOpen} buttonType='delete'>
+          Delete
+        </SmallBtn>
+        <EditDialog
+          fighters={fighters}
+          open={editDialog}
+          placeHandler={getPlaceDefaultValue}
+          dateHandler={getDateDefaultValue}
+          openHandler={handleEditOpen}
+          closeHandler={handleEditClose}
+          scheduleInfo={props.scheduleInfo}
+          scheduleHandler={props.scheduleHandler}
+          scheduleData={props.scheduleData}
+          countDown={props.countDownHandler}
+        />
+        <DeleteDialog
+          open={deleteDialog}
+          scheduleInfo={props.scheduleInfo}
+          openHandler={handleDeleteOpen}
+          closeHandler={handleDeleteClose}
+          scheduleHandler={props.scheduleHandler}
+          scheduleData={props.scheduleData}
+        />
+      </div>
+      <div className='mobile-edit-button'>
+        <button className='mobile-edit'>Edit</button>
+        <button className='mobile-delete'>Delete</button>
+      </div>
+    </React.Fragment>
   );
 };
 

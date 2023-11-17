@@ -18,3 +18,16 @@
   margin-top: 5rem;
   white-space: nowrap;
 }
+
+@media all and (max-width: 414px) {
+  .search-bar {
+    width: 85%; /* Resize the search bar to 85% of the viewport width */
+    margin-right: 1rem;
+  }
+
+  .searchButton {
+    margin-top: 5rem;
+    margin-right: 6.7rem;
+    white-space: nowrap;
+  }
+}

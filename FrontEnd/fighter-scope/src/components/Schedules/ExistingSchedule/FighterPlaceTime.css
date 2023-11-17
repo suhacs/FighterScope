@@ -3,7 +3,6 @@
 }
 
 .fighters {
-  /* font-size: 1.5rem; */
   font-size: clamp(1rem, 2.8vw, 1.8rem);
 
   font-weight: bold;
@@ -18,7 +17,6 @@
   margin-top: 0.1rem;
   margin-left: 1rem;
   font-size: clamp(0.6rem, 1.8vw, 1.1rem);
-  /* font-size: 0.9rem; */
 }
 
 .icon {
@@ -27,5 +25,11 @@
 
 .bolder {
   font-weight: bold;
-  font-size: inherit; /* Make sure it inherits the font size */
+  font-size: inherit;
+}
+
+@media all and (max-width: 414px) {
+  .fighters {
+    padding-top: 1.2rem;
+  }
 }
