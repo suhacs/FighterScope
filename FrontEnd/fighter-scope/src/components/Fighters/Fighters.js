@@ -15,11 +15,11 @@ const Fighters = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const fightersToDisplay = filteredFighters || fighters;
   const totalFighters = fightersToDisplay?.length;
+  const itemsPerPage = 10;
   const totalPages = Math.ceil(totalFighters / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const fightersToShow = fightersToDisplay?.slice(startIndex, endIndex);
-  const itemsPerPage = 10;
 
   useEffect(() => {
     retrieveFighter().then((data) => setFighters(data));
