@@ -32,11 +32,7 @@ const createSchedule = async (req, res) => {
     }
 
     const dateValue = new Date(req.body.date);
-
-    // Adjust date to Toronto time
-    // const localDateTime = dateValue.toLocaleString('en-US', {
-    //   timeZone: 'America/New_York',
-    // });
+    dateValue.setHours(dateValue.getHours() + 5); // Adjust date to Toronto time
 
     // Create a Schedule
     const schedule = new Schedule({
