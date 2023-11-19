@@ -34,13 +34,13 @@ const createSchedule = async (req, res) => {
     const dateValue = new Date(req.body.date);
 
     // Adjust date to Toronto time
-    const localDateTime = dateValue.toLocaleString('en-US', {
-      timeZone: 'America/New_York',
-    });
+    // const localDateTime = dateValue.toLocaleString('en-US', {
+    //   timeZone: 'America/New_York',
+    // });
 
     // Create a Schedule
     const schedule = new Schedule({
-      date: localDateTime,
+      date: dateValue,
       fighter_1: new mongoose.Types.ObjectId(req.body.fighter_1),
       fighter_2: new mongoose.Types.ObjectId(req.body.fighter_2),
       place: req.body.place,
