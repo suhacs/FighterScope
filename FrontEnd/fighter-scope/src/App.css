@@ -16,3 +16,8 @@
     width: 100vw;
   }
 }
+
+@font-face {
+  font-family: 'staatliches';
+  src: url(../src/fonts/Staatliches-Regular.ttf);
+}

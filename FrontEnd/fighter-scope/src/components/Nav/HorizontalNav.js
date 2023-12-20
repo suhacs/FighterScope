@@ -12,7 +12,7 @@ const titleStyle = {
   margin: '0.7rem 3rem',
   position: 'relative',
   left: '6.4rem',
-  fontFamily: 'Staatliches, sans-serif',
+  fontFamily: 'staatliches, sans-serif',
 };
 
 const navLiStyle = {
