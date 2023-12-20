@@ -44,6 +44,7 @@ export const countries = [
   'Chad',
   'Chile',
   'China',
+  'Cuba',
   'Christmas Island',
   'Cocos (Keeling) Islands',
   'Colombia',

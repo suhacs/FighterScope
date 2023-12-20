@@ -13,7 +13,13 @@ const Fighters = () => {
   const [fighters, setFighters] = useState();
   const [filteredFighters, setFilteredFighters] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+  const fightersToDisplay = filteredFighters || fighters;
+  const totalFighters = fightersToDisplay?.length;
   const itemsPerPage = 10;
+  const totalPages = Math.ceil(totalFighters / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const fightersToShow = fightersToDisplay?.slice(startIndex, endIndex);
 
   useEffect(() => {
     retrieveFighter().then((data) => setFighters(data));
@@ -27,18 +33,17 @@ const Fighters = () => {
     setFilteredFighters(filteredItems);
   };
 
-  const fightersToDisplay = filteredFighters || fighters;
-
-  const totalFighters = fightersToDisplay?.length;
-  const totalPages = Math.ceil(totalFighters / itemsPerPage);
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const fightersToShow = fightersToDisplay?.slice(startIndex, endIndex);
+  const setFirstPage = () => {
+    setCurrentPage(1);
+  };
 
   return (
     <React.Fragment>
-      <SearchBar fighters={fighters} filterHandler={filterHandler} />
+      <SearchBar
+        fighters={fighters}
+        filterHandler={filterHandler}
+        pageHandler={setFirstPage}
+      />
       <NewFighter />
       <Card className='schedule-wrapper'>
         {fighters &&
