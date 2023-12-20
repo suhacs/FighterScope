@@ -2,7 +2,7 @@
   display: inline-block;
   height: 100%;
   width: 100vw;
-  backgroundcolor: rgb(24, 34, 46);
+  background-color: rgb(24, 34, 46);
   position: sticky;
   top: 0;
 }

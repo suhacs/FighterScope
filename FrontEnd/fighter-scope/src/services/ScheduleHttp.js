@@ -36,7 +36,12 @@ export const retrieveSchedule = async () => {
     const fighterArr = await fighterResponse.json();
     const scheduleData = await mapFightersToNames(scheduleArr, fighterArr);
 
-    return scheduleData;
+    const currentTime = new Date();
+    const futureSchedules = scheduleData.filter(
+      (schedule) => schedule.date > currentTime
+    );
+
+    return futureSchedules;
   } catch (err) {
     console.error('Error occurred during fetching data:', err);
   }

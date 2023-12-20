@@ -1,6 +1,6 @@
 .newFighterBox {
   height: 28rem;
-  width: 68rem;
+  width: clamp(58rem, 50vw, 68rem);
   margin: 1.5rem auto;
 
   background-color: rgb(255, 255, 255);
@@ -11,6 +11,13 @@
 
 form {
   margin: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .newFighterBox {
+    width: 40rem;
+    height: 24rem;
+  }
 }
 
 @media only screen and (max-width: 414px) {

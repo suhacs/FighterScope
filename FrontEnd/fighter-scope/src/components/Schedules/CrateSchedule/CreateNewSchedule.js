@@ -13,16 +13,6 @@ const commonInputStyle = {
   },
 };
 
-const NewScheduleBox = {
-  height: '28rem',
-  width: '68rem',
-  margin: '1rem auto',
-  bgcolor: 'rgb(255, 255, 255)',
-  border: '2px solid',
-  borderColor: 'rgb(180, 180, 180)',
-  borderRadius: '60px',
-};
-
 const CreateNewSchedule = () => {
   const [fighters, setFighters] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState('NoDisplay');

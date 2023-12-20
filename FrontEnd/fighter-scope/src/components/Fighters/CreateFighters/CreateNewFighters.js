@@ -9,7 +9,6 @@ import ShowAlert from '../../UI/ShowAlert';
 import SendIcon from '@mui/icons-material/Send';
 import './CreateNewFighters.css';
 import { countries } from '../../../data/countries';
-import { styled } from '@mui/material/styles';
 
 const CrateNewFighters = (props) => {
   const [formSubmitted, setFormSubmitted] = useState('NoDisplay');

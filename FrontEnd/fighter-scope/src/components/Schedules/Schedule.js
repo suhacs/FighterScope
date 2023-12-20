@@ -12,8 +12,6 @@ import EditButton from './ExistingSchedule/EditButton';
 import { getToken } from '../../data/token';
 import { getUserRole } from '../../data/token';
 import { getUserName } from '../../data/token';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 
 function Schedule(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -59,23 +57,20 @@ function Schedule(props) {
       />
       {userRole === 'admin' && <NewSchedule />}
       <Card className='schedule-wrapper'>
-        {itemsToShow.map(
-          (item) =>
-            currentDate < item.date && (
-              <div className='inner-schedule-wrapper' key={item.id}>
-                <DateBox date={item.date} />
-                <FighterPlaceTime info={item} date={item.date} />
-                <CountDown date={item.date} />
-                {userRole === 'admin' && (
-                  <EditButton
-                    scheduleData={props.schedule}
-                    scheduleHandler={props.scheduleHandler}
-                    scheduleInfo={item}
-                  />
-                )}
-              </div>
-            )
-        )}
+        {itemsToShow.map((item) => (
+          <div className='inner-schedule-wrapper' key={item.id}>
+            <DateBox date={item.date} />
+            <FighterPlaceTime info={item} date={item.date} />
+            <CountDown date={item.date} />
+            {userRole === 'admin' && (
+              <EditButton
+                scheduleData={props.schedule}
+                scheduleHandler={props.scheduleHandler}
+                scheduleInfo={item}
+              />
+            )}
+          </div>
+        ))}
       </Card>
       <div className='pagination-container'>
         <Stack spacing={2}>
