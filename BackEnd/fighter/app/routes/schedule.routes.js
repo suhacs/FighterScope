@@ -5,7 +5,7 @@ module.exports = (app) => {
 
   router.post('/', schedule.createSchedule);
 
-  router.get('/', schedule.retreiveAllSchedule);
+  router.get('/', schedule.retrieveFutureSchedule);
 
   router.get('/fighter/:fighterId', schedule.findSchedulesByFighterId);
 

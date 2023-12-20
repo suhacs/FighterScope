@@ -53,13 +53,16 @@ const createSchedule = async (req, res) => {
   }
 };
 
-const retreiveAllSchedule = (req, res) => {
-  Schedule.find({})
+const retrieveFutureSchedule = (req, res) => {
+  const currentDate = new Date();
+
+  Schedule.find({ date: { $gt: currentDate } })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
-      res.status(500).send;
+      console.error(err);
+      res.status(500).send('Internal Server Error');
     });
 };
 
@@ -187,7 +190,7 @@ const findSchedulesByFightersNameOrPlace = async (req, res) => {
 
 module.exports = {
   createSchedule,
-  retreiveAllSchedule,
+  retrieveFutureSchedule,
   deleteScheduleById,
   findSchedulesByFighterId,
   updateScheduleById,
