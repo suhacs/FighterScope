@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Card from '../UI/Card';
-import './Schedule.css';
-import DateBox from './ExistingSchedule/DateBox';
-import FighterPlaceTime from './ExistingSchedule/FighterPlaceTime';
-import CountDown from './ExistingSchedule/CountDown';
-import SearchBar from './SearchBar/SearchBar';
-import NewSchedule from './CrateSchedule/NewSchedule';
-import EditButton from './ExistingSchedule/EditButton';
-import { getToken } from '../../data/token';
-import { getUserRole } from '../../data/token';
-import { getUserName } from '../../data/token';
+import React, { useState, useEffect } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import Card from "../UI/Card";
+import "./Schedule.css";
+import DateBox from "./ExistingSchedule/DateBox";
+import FighterPlaceTime from "./ExistingSchedule/FighterPlaceTime";
+import CountDown from "./ExistingSchedule/CountDown";
+import SearchBar from "./SearchBar/SearchBar";
+import NewSchedule from "./CrateSchedule/NewSchedule";
+import EditButton from "./ExistingSchedule/EditButton";
+import { getToken } from "../../data/token";
+import { getUserRole } from "../../data/token";
+import { getUserName } from "../../data/token";
 
 function Schedule(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,14 +55,14 @@ function Schedule(props) {
         filterHandler={props.filterHandler}
         pageHandler={setFirstPage}
       />
-      {userRole === 'admin' && <NewSchedule />}
-      <Card className='schedule-wrapper'>
+      {userRole === "admin" && <NewSchedule />}
+      <Card className="schedule-wrapper">
         {itemsToShow.map((item) => (
-          <div className='inner-schedule-wrapper' key={item.id}>
+          <div className="inner-schedule-wrapper" key={item.id}>
             <DateBox date={item.date} />
             <FighterPlaceTime info={item} date={item.date} />
             <CountDown date={item.date} />
-            {userRole === 'admin' && (
+            {userRole === "admin" && (
               <EditButton
                 scheduleData={props.schedule}
                 scheduleHandler={props.scheduleHandler}
@@ -72,7 +72,7 @@ function Schedule(props) {
           </div>
         ))}
       </Card>
-      <div className='pagination-container'>
+      <div className="pagination-container">
         <Stack spacing={2}>
           <Pagination
             count={totalPages}
