@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import './CountDown.css';
+import { useState, useEffect } from "react";
+import "./CountDown.css";
 
 const CountDown = (props) => {
   const [DDay, setDDay] = useState(0);
@@ -17,24 +17,21 @@ const CountDown = (props) => {
       const minutes = Math.floor(
         (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
       );
-      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
       const countdownString = `D-${days} ${hours
         .toString()
-        .padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds
-        .toString()
-        .padStart(2, '0')}`;
+        .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
       setDDay(countdownString);
 
       if (days < 1 && days > 0) {
-        setDDay('D-DAY');
+        setDDay("D-DAY");
       }
-    }, 80);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  return <p className='count-down'>{DDay}</p>;
+  return <p className="count-down">{DDay}</p>;
 };
 
 export default CountDown;

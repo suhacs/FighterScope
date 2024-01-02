@@ -4,7 +4,7 @@
   color: rgb(181, 65, 64);
   font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 900;
-  left: clamp(22em, 60vw, 25em);
+  left: clamp(24.5em, 60vw, 27em);
   white-space: nowrap;
 }
 

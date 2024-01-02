@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import './Fighters.module.css';
-import SearchBar from '../Schedules/SearchBar/SearchBar';
-import NewFighter from './CreateFighters/NewFighter';
-import Card from '../UI/Card';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { retrieveFighter } from '../../services/FighterHttp';
-import ExistingFighter from './ExistingFighters/ExistingFighter';
-import EditFighter from './ExistingFighters/EditFighter';
+import React, { useState, useEffect } from "react";
+import "./Fighters.module.css";
+import SearchBar from "../Schedules/SearchBar/SearchBar";
+import NewFighter from "./CreateFighters/NewFighter";
+import Card from "../UI/Card";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { retrieveFighter } from "../../services/FighterHttp";
+import ExistingFighter from "./ExistingFighters/ExistingFighter";
+import EditFighter from "./ExistingFighters/EditFighter";
 
 const Fighters = () => {
   const [fighters, setFighters] = useState();
@@ -19,7 +19,13 @@ const Fighters = () => {
   const totalPages = Math.ceil(totalFighters / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const fightersToShow = fightersToDisplay?.slice(startIndex, endIndex);
+  const fightersToShow = fightersToDisplay
+    ? fightersToDisplay.slice(startIndex, endIndex)
+    : [];
+
+  const sortedFightersToShow = fightersToShow
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   useEffect(() => {
     retrieveFighter().then((data) => setFighters(data));
@@ -45,10 +51,10 @@ const Fighters = () => {
         pageHandler={setFirstPage}
       />
       <NewFighter />
-      <Card className='schedule-wrapper'>
+      <Card className="schedule-wrapper">
         {fighters &&
-          fightersToShow.map((item) => (
-            <div className='inner-schedule-wrapper' key={item.id}>
+          sortedFightersToShow.map((item) => (
+            <div className="inner-schedule-wrapper" key={item.id}>
               <ExistingFighter fighterInfo={item} />
               <EditFighter
                 fighterData={fighters}
@@ -58,7 +64,7 @@ const Fighters = () => {
             </div>
           ))}
       </Card>
-      <div className='pagination-container'>
+      <div className="pagination-container">
         <Stack spacing={2}>
           <Pagination
             count={totalPages}
