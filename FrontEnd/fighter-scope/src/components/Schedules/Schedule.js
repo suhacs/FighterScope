@@ -32,9 +32,9 @@ function Schedule(props) {
     setUserName(userName);
   }, []);
 
-  const sortedSchedule = [...props.schedule].sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
+  const sortedSchedule = Array.isArray(props.schedule)
+    ? [...props.schedule].sort((a, b) => new Date(a.date) - new Date(b.date))
+    : [];
 
   const setFirstPage = () => {
     setCurrentPage(1);
